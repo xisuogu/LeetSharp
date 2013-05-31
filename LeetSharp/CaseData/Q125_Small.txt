@@ -1,0 +1,27 @@
+""	true
+" "	true
+"."	true
+"a"	true
+"a."	true
+".a"	true
+".,"	true
+"ab"	false
+"aa"	true
+"aA"	true
+"!!!"	true
+"a a"	true
+"a ba"	true
+"a.b,."	false
+"aba"	true
+"abb"	false
+"Bab"	true
+"1a2"	false
+"1b1"	true
+"abba"	true
+"ab2a"	false
+"ab@a"	true
+"c#dc"	true
+"......a....."	true
+"A man, a plan, a canal: Panama"	true
+"race car"	true
+"race a car"	false

@@ -1,0 +1,19 @@
+""	0
+" "	0
+"        "	0
+"a"	1
+" a"	1
+"a "	1
+" a "	1
+"b a "	1
+"b   a    "	1
+"    day"	3
+"    day "	3
+"day"	3
+"day    "	3
+"Today is a nice day"	3
+"Today is a nice   day"	3
+"  Today is a nice day"	3
+"Today is a nice day "	3
+"Today is a nice   day  "	3
+"Hello World"	5

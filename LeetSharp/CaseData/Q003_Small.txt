@@ -1,0 +1,11 @@
+﻿""	0	
+"abcabcbb"	3	
+"bbbbb"	1	
+"abcd"	4	
+"abcabcde"	5	
+"abbabababa"	2	
+"abcdcefcg"	4	
+"abcddcbae"	5	
+"abcbaebcdef"	5	
+"abccbaabccba"	3	
+"inprobabilitytheoryandstatisticsamedianisdescribedasthenumericvalueseparating"	10

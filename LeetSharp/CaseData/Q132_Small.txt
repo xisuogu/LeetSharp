@@ -1,0 +1,12 @@
+"a"	0
+"ab"	1
+"bb"	0
+"cdd"	1
+"dde"	1
+"efe"	0
+"fff"	0
+"abbab"	1
+"leet"	2
+"coder"	4
+"abcccb"	1
+"cabababcbc"	3

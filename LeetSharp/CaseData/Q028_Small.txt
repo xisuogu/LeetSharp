@@ -1,0 +1,16 @@
+"", ""	""
+"", "a"	null
+"a", ""	"a"
+"a", "a"	"a"
+"aaa", "a"	"aaa"
+"aaa", "aa"	"aaa"
+"aaa", "aaa"	"aaa"
+"aaa", "aaaa"	null
+"mississippi", "a"	null
+"mississippi", "mississippi"	"mississippi"
+"mississippi", "mississippii"	null
+"mississippi", "issi"	"ississippi"
+"mississippi", "issip"	"issippi"
+"mississippi", "issipi"	null
+"hello", "ll"	"llo"
+"abcde", "cd"	"cde"

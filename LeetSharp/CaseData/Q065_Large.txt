@@ -1,0 +1,1479 @@
+"3"	true
+"e"	false
+"1"	true
+"."	false
+"4"	true
+"0"	true
+" "	false
+"5"	true
+"2"	true
+"7"	true
+"9"	true
+"6"	true
+" ."	false
+"e9"	false
+"11"	true
+"1 "	true
+".1"	true
+"19"	true
+"01"	true
+".2"	true
+"e."	false
+"4 "	true
+"e1"	false
+" 0"	true
+"0e"	false
+".0"	true
+"3."	true
+"41"	true
+"e7"	false
+"5 "	true
+".6"	true
+".."	false
+"61"	true
+"65"	true
+"e0"	false
+"0."	true
+"80"	true
+"5e"	false
+"1e"	false
+"10"	true
+"17"	true
+"13"	true
+"1."	true
+"48"	true
+".5"	true
+"21"	true
+"00"	true
+". "	false
+"6e"	false
+"18"	true
+"e6"	false
+"15"	true
+"05"	true
+"56"	true
+"4."	true
+"73"	true
+"44"	true
+"03"	true
+"ee"	false
+"60"	true
+".e"	false
+"e3"	false
+"66"	true
+" e"	false
+"2e0"	true
+"210"	true
+"1e6"	true
+".20"	true
+"10e"	false
+"..2"	false
+". 1"	false
+"0.8"	true
+"4e0"	true
+"5.6"	true
+"151"	true
+"6.1"	true
+".15"	true
+"1 4"	false
+"114"	true
+"0.7"	true
+"936"	true
+".e1"	false
+"55e"	false
+"510"	true
+"0.."	false
+"e11"	false
+"010"	true
+"016"	true
+".0e"	false
+"1 0"	false
+"e81"	false
+"6e0"	true
+"1  "	true
+"605"	true
+".18"	true
+"e20"	false
+" 74"	true
+"e61"	false
+".80"	true
+"00e"	false
+" 9."	true
+"000"	true
+"1e."	false
+".91"	true
+"3. "	true
+"113"	true
+"005"	true
+"111"	true
+"041"	true
+". 0"	false
+".1."	false
+"861"	true
+"26."	true
+"1 ."	false
+"..."	false
+"101"	true
+".00"	true
+"316"	true
+".1e"	false
+"500"	true
+"01."	true
+"78."	true
+"3e1"	true
+"3.."	false
+"381"	true
+"315"	true
+".72"	true
+"1e9"	true
+"59."	true
+"110"	true
+"1.0"	true
+"0.1"	true
+"4.."	false
+"1.4"	true
+".2."	false
+" 9e"	false
+"811"	true
+"10."	true
+" 0e"	false
+"1.."	false
+"225"	true
+"00 "	true
+"341"	true
+"108"	true
+"1.1"	true
+"..0"	false
+"920"	true
+"150"	true
+".. "	false
+"008"	true
+"e44"	false
+"4e."	false
+"400"	true
+"1.3"	true
+"0e "	false
+"ee6"	false
+"3  "	true
+"46."	true
+"0.e"	false
+"235"	true
+"971"	true
+"ee."	false
+"171"	true
+" .9"	true
+" 0 "	true
+"1e1"	true
+"002"	true
+"3 6"	false
+"e.1"	false
+"0.0"	true
+"8.."	false
+"301"	true
+"7 1"	false
+"370"	true
+"6ee"	false
+".7."	false
+"070"	true
+"ee0"	false
+"01e"	false
+"761"	true
+"0e1"	true
+"130"	true
+"8 8"	false
+"0 0"	false
+"001"	true
+"911"	true
+"08."	true
+"009"	true
+"6 9"	false
+"700"	true
+"e12"	false
+"115"	true
+" 00"	true
+"11."	true
+".92"	true
+"801"	true
+"41."	true
+"170"	true
+"3.e"	false
+"900"	true
+"e0 "	false
+"175"	true
+"708"	true
+"1.7"	true
+".05"	true
+"e9e"	false
+"1.e"	false
+"0 ."	false
+"050"	true
+"1.8"	true
+"01 "	true
+"e1e"	false
+"41e"	false
+" e0"	false
+"100"	true
+"076"	true
+" 10"	true
+"18."	true
+"9e1"	true
+"e90"	false
+" ee"	false
+".9 "	true
+"8e "	false
+"961"	true
+"8ee"	false
+"05 "	true
+"5e4"	true
+"e51"	false
+"198"	true
+"0e3"	true
+"81."	true
+"934"	true
+"1. "	true
+" 06"	true
+"e01"	false
+"09 "	true
+"f.e"	false
+"85."	true
+"te1"	false
+"Re7"	false
+"3me"	false
+"5  "	true
+"D+ "	false
+"5.5"	true
+"e30"	false
+"Y+."	false
+"G76"	false
+"004"	true
+"e56"	false
+"02."	true
+"3e5"	true
+"e-e"	false
+"O62"	false
+".e0"	false
+"e.+"	false
+"-1."	true
+" T3"	false
+"Ui."	false
+"53K"	false
+"Z3m"	false
+"M0R"	false
+"+++"	false
+"+-."	false
+"6Ze"	false
+".5e"	false
+"16U"	false
+"O +"	false
+"j+1"	false
+"i.1"	false
+"2Se"	false
+"OL8"	false
+"J.-"	false
+"-01"	true
+"6+1"	false
+".8+"	false
+".9."	false
+"42e"	false
+"-7."	true
+"fe "	false
+"80e"	false
+"55."	true
+"7-c"	false
+"1+8"	false
+"F 3"	false
+".93"	true
+"tue"	false
+".p7"	false
+"92m"	false
+"e4."	false
+"7j1"	false
+"A--"	false
+"O ."	false
+"+Fe"	false
+"4. "	true
+".1+"	false
+"ee7"	false
+" H."	false
+"+eo"	false
+"3-2"	false
+"3x1"	false
+"-+K"	false
+". ."	false
+"..i"	false
+"+.e"	false
+"05A"	false
+"a1."	false
+"0- "	false
+"o.2"	false
+"2.e"	false
+"e 2"	false
+"ke."	false
+" 8+"	false
+"1-3"	false
+"4 e"	false
+" 75"	true
+"..9"	false
+".x0"	false
+"M32"	false
+" Uc"	false
+"5+6"	false
+"712"	true
+"525"	true
+"-.V"	false
+"4e+"	false
+"8q4"	false
+"4+w"	false
+".  "	false
+"ex7"	false
+"e+ "	false
+". +"	false
+" we"	false
+"4.m"	false
+"8f8"	false
+"De4"	false
+"- e"	false
+"22 "	true
+".e5"	false
+"D m"	false
+"Se6"	false
+" ub"	false
+"3Xe"	false
+"9OU"	false
+"ie7"	false
+"+CW"	false
+"e79"	false
+"Ie."	false
+" 23"	true
+"+ej"	false
+"3O."	false
+"5.g"	false
+"re."	false
+"+N1"	false
+"e-b"	false
+"9 E"	false
+"8-B"	false
+"e+U"	false
+".+."	false
+"i9a"	false
+"0-e"	false
+"G.+"	false
+"4I2"	false
+"zl4"	false
+"e+8"	false
+"881"	true
+"3xx"	false
+"5-q"	false
+"e.T"	false
+"7e5"	true
+"er2"	false
+"--e"	false
+"69e"	false
+"e.e"	false
+"eu7"	false
+"-R6"	false
+"+ev"	false
+"1-4"	false
+"+ ."	false
+"097"	true
+".-4"	false
+"eg8"	false
+"J.."	false
+".t-"	false
+"OBe"	false
+"I L"	false
+"6+x"	false
+"-7e"	false
+"i53"	false
+"e18"	false
+"a2+"	false
+".7-"	false
+"5fA"	false
+"NE "	false
+"ee4"	false
+"+.8"	true
+"M0E"	false
+"51u"	false
+"J++"	false
+"ReE"	false
+"z6e"	false
+"ee "	false
+"e2+"	false
+"+53"	true
+"8+6"	false
+"+3e"	false
+"Oee"	false
+"U.7"	false
+"4e6"	true
+"-0e"	false
+"-X8"	false
+"e-1"	false
+"0x."	false
+"L7 "	false
+"5-H"	false
+"+eM"	false
+"6e+"	false
+"m-7"	false
+"5e."	false
+"H.P"	false
+"k74"	false
+"1+6"	false
+"1 6"	false
+"10o"	false
+"3 x"	false
+"eR."	false
+"3+e"	false
+"e+."	false
+"Dw."	false
+"n+-"	false
+".4K"	false
+"-75"	true
+"39E"	false
+"e. "	false
+".57"	true
+"e98"	false
+" 7e"	false
+"18e"	false
+"e9 "	false
+".+e"	false
+"-2."	true
+"..o"	false
+"-1 "	true
+"8.0"	true
+"+.2"	true
+".m5"	false
+"9-e"	false
+"07L"	false
+"17."	true
+".ee"	false
+"..1"	false
+"4ee"	false
+"8C."	false
+"e7."	false
+"u.1"	false
+"652"	true
+"24g"	false
+"e1."	false
+"e.2"	false
+" -."	false
+"052"	true
+"e8 "	false
+"e52"	false
+"e +"	false
+"9y9"	false
+"ee-"	false
+"-e."	false
+"eE5"	false
+".3e"	false
+".83"	true
+"3.9"	true
+"50."	true
+"hee"	false
+"0V."	false
+".e+"	false
+"ee+"	false
+".41"	true
+"8.e"	false
+"X46"	false
+"139"	true
+"7 8"	false
+"4.7"	true
+"47."	true
+"e.."	false
+"20."	true
+"68 "	true
+"e6e"	false
+".e."	false
+"9 8"	false
+"4e3"	true
+"2e "	false
+"928"	true
+"931"	true
+".W4"	false
+"VKe"	false
+"1 3"	false
+"+ 1"	false
+"e8."	false
+"3e4"	true
+"eeh"	false
+"3 e"	false
+"6.r"	false
+"8e."	false
+" 65"	true
+"eM."	false
+"320"	true
+" 07"	true
+"6.5"	true
+"ey8"	false
+"0e5"	true
+"I5z"	false
+"0 6"	false
+".ev"	false
+"8eQ"	false
+"0+."	false
+"66."	true
+"33 "	true
+"1ee"	false
+"377"	true
+"ee8"	false
+"07e"	false
+"+93"	true
+"2e5"	true
+"9e3"	true
+"777"	true
+".-e"	false
+"e60"	false
+"8-."	false
+"X79"	false
+" 42"	true
+"6en"	false
+"9.8"	true
+"4e7"	true
+".+8"	false
+" -e"	false
+" 56"	true
+"8 5"	false
+"-8-"	false
+"F.4"	false
+".9e"	false
+"  e"	false
+".96"	true
+"6Ye"	false
+".1i"	false
+"+61"	true
+"258"	true
+"417"	true
+"6+e"	false
+"e+3"	false
+"976"	true
+"g12"	false
+".eT"	false
+"94e"	false
+"43e"	false
+"-3."	true
+"0 4"	false
+"R.."	false
+"ee2"	false
+"+E3"	false
+"5.8"	true
+"ez7"	false
+".45"	true
+"Q.1"	false
+"2. "	true
+"e.5"	false
+"eze"	false
+"5.-"	false
+"e9P"	false
+" 1."	true
+".t9"	false
+"eeK"	false
+"+8 "	true
+". 7"	false
+"0m."	false
+"..e"	false
+".H."	false
+".7e"	false
+"y60"	false
+" e3"	false
+"e 1"	false
+".z8"	false
+"1e0"	true
+"435"	true
+"54 "	true
+". U"	false
+"4 9"	false
+"97e"	false
+"i+-"	false
+".70.E"	false
+"671.l"	false
+"ee0.5"	false
+"6..8+"	false
+"eeee7"	false
+".-e.W"	false
+"e2.20"	false
+"4e.9-"	false
+". 0e7"	false
+"40.81"	true
+" r7 1"	false
+"a.e.q"	false
+"3...."	false
+"94TEP"	false
+" +0e-"	false
+"5-e95"	false
+"9+5 ."	false
+"43b6e"	false
+"4e1.e"	false
+"e.7e5"	false
+"0. .e"	false
+"6.. 3"	false
+"7-5Ae"	false
+"e3e6e"	false
+"e.I85"	false
+"e.617"	false
+".44.8"	false
+"65eFn"	false
+"6.3.0"	false
+"46.e3"	true
+"Qe4qV"	false
+"75.0."	false
+".e6ee"	false
+"He9ee"	false
+"9 ee "	false
+"e ..."	false
+"47  ."	false
+"eQe99"	false
+".-5 b"	false
+" ...e"	false
+"6e6.5"	false
+"6ee69"	false
+"2.-6."	false
+"7.e-."	false
+"5 1.8"	false
+"pee.e"	false
+"Q0e.e"	false
+" 57eh"	false
+"7..-8"	false
+"e2.e5"	false
+" 4e3."	false
+" eee1"	false
+"07..e"	false
+"20..8"	false
+"98005"	true
+"6.66-"	false
+".0s+-"	false
+"  -+ "	false
+"e-.26"	false
+"...n."	false
+" 9566"	true
+"96 e5"	false
+"28304"	true
+"2eee."	false
+"e.343"	false
+"5+..6"	false
+"W0e-H"	false
+"e73-."	false
+".e7eA"	false
+"8..e4"	false
+"eede2"	false
+".0.39"	false
+" 8. 4"	false
+"e24-e"	false
+".08 0"	false
+"3eee9"	false
+"..e6e"	false
+"28+9."	false
+"-.. e"	false
+". .ee"	false
+". ..8"	false
+"7e69e"	false
+"e6.7e"	false
+"e4e4e"	false
+" e-F-"	false
+"e4105"	false
+"  2.8"	true
+"8e.9e"	false
+"5ee.."	false
+"e6e66"	false
+"-4..2"	false
+"-euke"	false
+"66p45"	false
+"0..o6"	false
+"e35e."	false
+"5.7ee"	false
+"5.94+"	false
+"e4e e"	false
+" 6.2q"	false
+".568 "	true
+" 063e"	false
+"e.e.."	false
+"ee9.e"	false
+"-i dv"	false
+"2-09e"	false
+"2W0+ "	false
+"9Tp. "	false
+" .45."	false
+".e.ee"	false
+".e..Q"	false
+".. 6."	false
+"2.e7."	false
+"e51.4"	false
+" 2.ee"	false
+"e2.-e"	false
+"52..."	false
+"6+65e"	false
+"1e.66"	false
+".e.c8"	false
+" 01+2"	false
+"3.09e"	false
+"e7. 7"	false
+"5692."	true
+"67551"	true
+"-J.09"	false
+".e.-6"	false
+"1595."	true
+"e.e89"	false
+"W.e3e"	false
+"32+7."	false
+"+.461"	true
+"..ee."	false
+"6..L."	false
+"2e8e "	false
+".3+ee"	false
+"..1e+"	false
+"-e8+-"	false
+"..x8e"	false
+".2e81"	true
+".204e"	false
+"e.e03"	false
+"303 4"	false
+"eee.9"	false
+".+.6."	false
+".9 e "	false
+"82..3"	false
+"g13+."	false
+"0e 5."	false
+"5ee0."	false
+". .6e"	false
+"846.e"	false
+"60.6."	false
+"0.e-e"	false
+"5-673"	false
+"8P.91"	false
+"072K "	false
+"+e3ee"	false
+"V.e6."	false
+"42760"	true
+"ee46."	false
+"3e-+-"	false
+"ee2-2"	false
+" 90e "	false
+"9.0.8"	false
+"57-6e"	false
+".eeeR"	false
+"64..e"	false
+"-e58 "	false
+"..7e8"	false
+". +.0"	false
+" 8. 7"	false
+"e.6.3"	false
+".e132"	false
+"9.25."	false
+"7e57."	false
+"-.3e6"	true
+" e.4-"	false
+"e7..q"	false
+"75518"	true
+"8-eee"	false
+"8.-e9"	false
+" 3H17"	false
+"e 91."	false
+"..e21"	false
+" ..10"	false
+"68.89"	true
+"6y +."	false
+"e6.8e"	false
+"e2.3."	false
+"9. 2 "	false
+"e7.5."	false
+"D.-54"	false
+"35900"	true
+"3 418"	false
+"6.-e1"	false
+"..21e"	false
+"1 3.e"	false
+" eek."	false
+"P+e19"	false
+".87.."	false
+"92e1740e91"	false
+"7 0353372."	false
+"5 e40e 703"	false
+"+94.3.+66e"	false
+"71.5..U29."	false
+"e8 -.6 e.."	false
+"949.40. 62"	false
+"1856.6h..-"	false
+"e0-19688ee"	false
+"3-37W.ee39"	false
+" 257e6748e"	false
+"32e8 .616 "	false
+" 277707e26"	true
+"56+ .84473"	false
+"2...ee+..E"	false
+"e667e2743e"	false
+"e6..6e.ef."	false
+"3204ee0e.8"	false
+" +2OO805.8"	false
+"3 312z -e "	false
+"-91p7.67e1"	false
+"98+8e16.6 "	false
+"Bn.30.L 7+"	false
+".6T..3.3e1"	false
+"494e 1+ .."	false
+"4e77 3287e"	false
+"e.36e i3x."	false
+".-x294.8.6"	false
+"-8115 e957"	false
+"e136.66.72"	false
+"2e6u.745-9"	false
+"37424.59 ."	false
+"459277e38+"	false
+"u35e +15-e"	false
+"76..89e7e9"	false
+"0N82+r8e64"	false
+"61990793P0"	false
+"2-29j.  1."	false
+"..1.220e ."	false
+"88+e91e-7+"	false
+"84ee9e+e4."	false
+"25332+.6e+"	false
+"-+4e207 e2"	false
+"..+.8.515e"	false
+"W74911+4 ."	false
+"87e276 -.9"	false
+"e1C276h7.3"	false
+"81074470+4"	false
+".0.5e72e50"	false
+"9162079+4."	false
+".6 2e.e.9 "	false
+"7-9x9eE7we"	false
+"9W689936e "	false
+"5e..05 ee7"	false
+"80+e539.+5"	false
+"69 e. 60  "	false
+" . 22k7 19"	false
+". e2.99.e0"	false
+"48376682.4"	true
+"53.7U8e-98"	false
+"+ r4.e45e5"	false
+"ee22e4e3Ye"	false
+"6483ee-.. "	false
+"3. 07Yf694"	false
+"078332e437"	true
+"R7.U-9++- "	false
+"29 K es745"	false
+"0 92e359-2"	false
+"1Y958L81-G"	false
+"+V+Pee97 e"	false
+"67.x 0573."	false
+".-01..29E9"	false
+"+ .00e1e. "	false
+"E+9ee93 e+"	false
+"68.6-76 14"	false
+"e3+e 2-590"	false
+"e+pe.39 62"	false
+"e1e3988e39"	false
+"24c5 3+.91"	false
+"733+ee7e.2"	false
+"e7.e8K1877"	false
+"88-758.e 3"	false
+"48-546.JJ8"	false
+"48e8e17916"	false
+"1.99353L32"	false
+"e.7e645C.5"	false
+"1650-1 953"	false
+"e2e9e6Xee-"	false
+"83398Ne55e"	false
+"78e.634 55"	false
+"0y651.9117"	false
+" 11037e4He"	false
+"e14e71   8"	false
+".e74065e7+"	false
+"9997 3+..6"	false
+".d2378e4X0"	false
+"vW88151e6e"	false
+"6e09e+e 55"	false
+"4 444.3.4 "	false
+"1.431352e7"	true
+"2.+.36374e"	false
+".7.ee95e22"	false
+"6e..8 6977"	false
+"4+-e... .0"	false
+"7T+3.136e2"	false
+"ey.99+719e"	false
+"eee3UU25. "	false
+".9 e 070.2"	false
+"-651e--1e0"	false
+"4e3121.40e"	false
+". 66502h.K"	false
+" e+76e66l2"	false
+"86+71+8 2-"	false
+"06020e6073"	true
+"+o25621e3 "	false
+"e72D3.e74 "	false
+" 5.1e0j3Z3"	false
+"0eS.e955 1"	false
+"3e9-t3e048"	false
+"eV2ee512-8"	false
+".8N8.4u51."	false
+"9e98+540 3"	false
+".6 Ee.U.8 "	false
+"-+9e148-+."	false
+"2d218783eM"	false
+"-070991.58"	true
+"6L9+4-7e6-"	false
+".1.+eDe318"	false
+" 8e50e.e8+"	false
+"00-684.5+4"	false
+"3X6e41e1 e"	false
+".+eg10--85"	false
+"e2s51981J9"	false
+"e0e0X 609."	false
+" 6qt1e2..e"	false
+" 5M6158.4."	false
+"h..H655ee "	false
+"4445ee6..5"	false
+"47e.6. be."	false
+"ee..8- e2 "	false
+" c99.7e8 ."	false
+" 005047e+6"	true
+"3.+e35+65e"	false
+"790554n 82"	false
+"3+8-917590"	false
+"Qe8e.0.55+"	false
+"we57.94x.1"	false
+"++330.9e9."	false
+"-e9e..0.80"	false
+"9-3ee97e+5"	false
+"3132 63es9"	false
+"3.31ec25 0"	false
+"07e.6..033"	false
+"Vee3854 -4"	false
+"5e38.6e1e+"	false
+".41.8..4 +"	false
+"eAc.23e0X9"	false
+"+7e1.+510."	false
+"e6++e39v2S"	false
+".4T411 ee."	false
+"p.-2 108e4"	false
+"439724e2e5"	false
+"2e+60++604"	false
+"e4mel8.843"	false
+"17e3+. . 9"	false
+" .4292072A"	false
+"6 7. e040+"	false
+" 2c e.3802"	false
+"808e 461+e"	false
+"+32.82eh8."	false
+"8a187e5 8y"	false
+"2439.69..e"	false
+".4e284v6-7"	false
+"5o6--49.-1"	false
+"e.26. 03e1"	false
+".071e 15g."	false
+"851822 f2-"	false
+"8e.950Y.e8"	false
+"3.+-e01075"	false
+".9389e41. "	false
+"F2099e+.0."	false
+"  l8226e 6"	false
+"E27334-279"	false
+"v50 e.Ge3 "	false
+"66.5een1-9"	false
+"Zb1888.62-"	false
+"16e45A4548"	false
+"R0827eeee9"	false
+".e2545.eg5"	false
+"03.W790e67"	false
+"ee168.1710"	false
+".558.+2eo."	false
+"--10-Y4332"	false
+"5e0.e.33-9"	false
+"597H.42662"	false
+"56..6e5340"	false
+"--e6+1.367"	false
+"+3. e04116"	false
+" 40q.- .62"	false
+"4836e66054"	true
+"9.71727e22"	true
+"55076.5437"	true
+"667332e696"	true
+" 9657.91e9"	true
+"176.e50455"	true
+"32.e-80123"	true
+"72348e7431"	true
+"850404625 "	true
+"38e8699485"	true
+"1328273213"	true
+"0180e81700"	true
+"3736762.81"	true
+"875.1544e7"	true
+"09e9877950"	true
+"2e83140193"	true
+"+93728.248"	true
+".338e57821"	true
+"467509860."	true
+"28545.e624"	true
+"69861.6e22"	true
+"7278829.49"	true
+"256523.e02"	true
+"378510e004"	true
+"31355628e8"	true
+"649.023444"	true
+"8e52791704"	true
+" 28096.458"	true
+"5897972791"	true
+"91.12e6319"	true
+"9533917.19"	true
+"1684068864"	true
+"  13e58069"	true
+"063.e57002"	true
+"9189196467"	true
+"48920999e5"	true
+"+32.6318e6"	true
+".571380561"	true
+".271508e05"	true
+"1204327033"	true
+"511e381307"	true
+"438.4e0197"	true
+"11500236.8"	true
+"17.1661975"	true
+"3108.16676"	true
+"798e566054"	true
+"86e2660151"	true
+"-044746.47"	true
+"-1.e49046 "	true
+"6.298359e7"	true
+"79850.8484"	true
+".1657304e3"	true
+"7771793e51"	true
+"4.4600e188"	true
+"0401483909"	true
+"49.069518 "	true
+"-611711380"	true
+"3956847304"	true
+"8e04316290"	true
+"87e8864992"	true
+"06730.433 "	true
+"4818202950"	true
+"5.0e893700"	true
+"9.51061360"	true
+"-49e445254"	true
+"460506958 "	true
+" 758.79e48"	true
+"0245.89632"	true
+"46603430e5"	true
+"14.9e74509"	true
+".1678343e5"	true
+"34161516e9"	true
+"6644.94218"	true
+"8182423.00"	true
+"0.01822091"	true
+"013455.e1 "	true
+" 303980320"	true
+"2240e0288 "	true
+"5.65572636"	true
+"206e627261"	true
+"608284e58 "	true
+"7619102516"	true
+"7667.592e1"	true
+" 065374348"	true
+"52e0281497"	true
+"6500170671"	true
+"-26957e471"	true
+"73.1e21199"	true
+" 1779.8167"	true
+"4244035374"	true
+".653334751"	true
+"027.78458 "	true
+"7422994463"	true
+"-.18205126"	true
+"6.421826e5"	true
+"2907418391"	true
+"1.38354e+8"	true
+"86e4661377"	true
+"959440.94f"	false
+"3.94752969"	true
+"5409928995"	true
+"11e1765196"	true
+"08195.23e4"	true
+" -54.53061"	true
+"90.5645081"	true
+"  089211e1"	true
+"174356e066"	true
+"-776e61740"	true
+"075.44e229"	true
+"71e4282131"	true
+"84656e656D"	false
+"50e5048696"	true
+"8112626944"	true
+"5e56301137"	true
+"9.40044811"	true
+"34.72e7083"	true
+" 274560592"	true
+"97.20015e5"	true
+"-.13678e62"	true
+".711445472"	true
+"59158073.4"	true
+".703e+4144"	true
+"19035e2285"	true
+"163351.537"	true
+"-576.86e52"	true
+"1836037755"	true
+".85e+72041"	true
+" 4783.99e6"	true
+" -69e81121"	true
+"563858.e30"	true
+"5107355e29"	true
+" -.7e+0435"	true
+"334.4e170 "	true
+"837683754 "	true
+"8720241.73"	true
+" -8439e403"	true
+"157e104927"	true
+"  4.183e28"	true
+" 9e4484578"	true
+" 3.8058575"	true
+".789866e-3"	true
+" 9669.1942"	true
+"631.294768"	true
+"96e6711821"	true
+"072594e053"	true
+"14.8e5449 "	true
+"228.e16641"	true
+"34.250e192"	true
+"509180.201"	true
+"6.72e36964"	true
+"0018936   "	true
+"75679.4172"	true
+"7580599293"	true
+"4638737982"	true
+"+884755133"	true
+"0e75412409"	true
+"5.e2617635"	true
+"92529e2933"	true
+"-548.6133 "	true
+"62.2511073"	true
+"-.498e4176"	true
+"1638931e36"	true
+".4665e6746"	true
+".255852e89"	true
+" 86833431."	true
+"4e+1831773"	true
+"350.4e4320"	true
+"61030.3805"	true
+"359043.603"	true
+"0760542059"	true
+"94.740867 "	true
+"0080052.24"	true
+"837725757."	true
+"-277586109"	true
+"+42e+76125"	true
+"424132.095"	true
+"661850e060"	true
+"65.8954924"	true
+"40949e2471"	true
+"+15805.526"	true
+"8340e2262 "	true
+" 55468.e65"	true
+"0290.05980"	true
+"2945e+2553"	true
+"-94e394725"	true
+" .15324737"	true
+"894.125838"	true
+"6269407694"	true
+"24949.3065"	true
+"9.29300496"	true
+"32.82696e6"	true
+"17835863e4"	true
+"01897e3973"	true
+"+553.9e827"	true
+"-7.940e321"	true
+"+7016.99  "	true
+"88507830.0"	true
+"-0577.0123"	true
+"+5.12657e4"	true
+"166e-02767"	true
+".107083246"	true
+"-239.579  "	true
+"+7859886.9"	true
+"980.626535"	true
+".641086857"	true
+" 801800.62"	true
+"6901e60835"	true
+".030136e60"	true
+"7979661e94"	true
+"7169404e12"	true
+"98677e0209"	true
+"-985911299"	true
+"+37760e133"	true
+"6508285.e8"	true
+"85511.7140"	true
+"+10e+46749"	true
+"549007605."	true
+" 2e3276141"	true
+" .01600e29"	true
+"166670788."	true
+"530.310864"	true
+"-3844867. "	true
+"77144.4348"	true
+"6.39e11454"	true
+"6e95838852"	true
+"1817954010"	true
+"067745624."	true
+"+335653687"	true
+"1711357378"	true
+"3361.55049"	true
+".3652e6805"	true
+"3e03084908"	true
+"3743289465"	true
+"16092e9004"	true
+"279e557829"	true
+"4.21946e1 "	true
+" 36e208334"	true
+"36.6e73367"	true
+"1643.0567 "	true
+"1e58689735"	true
+"4517606454"	true
+".090e63840"	true
+"24939164. "	true
+"8605351.e4"	true
+"79.17e0292"	true
+".5e2369093"	true
+" 7.86397e0"	true
+"348030043 "	true
+"8814579e23"	true
+" 93158651."	true
+"0598.2e682"	true
+"109727237193.1 "	true
+" 088742432.12e1"	true
+"56670244781.326"	true
+"44e016912630333"	true
+"45.9874933e+473"	true
+"52305584e897361"	true
+"3.42691837e-014"	true
+" 751892213e9817"	true
+"8085390941.983 "	true
+"6531.3012374e10"	true
+"4335e6773123995"	true
+" 6.830e81308721"	true
+"192.752e4900909"	true
+"51007e+28440985"	true
+" 35019666.24962"	true
+".65640791247040"	true
+"4078046578e3992"	true
+"43.9947317e9150"	true
+"1160181001e4999"	true
+"1371153060292e1"	true
+"578150404.495e4"	true
+"-40061713962213901e3"	true
+"07053299.68e40303731"	true
+" 01.64358277492401e4"	true
+" 3501980999044281.e7"	true
+"577514729524.75e9499"	true
+"2392184287e931692604"	true
+"97745e94633129402280"	true
+"92999522294757.73e62"	true
+"5080341e437282834303"	true
+"5e230709357851502907"	true
+" 971074089184.6e0945"	true
+"67.4e027373900727208"	true
+" +51.93483302981e917"	true
+"992700.5513600757592"	true
+"83752481.61e73455980"	true
+"9798912822943623.356"	true
+"4674e011117523839758"	true
+"86.870303248e3523581"	true
+"27968585981718583e27"	true
+"3290.2169007e5032781"	true
+" 03346.3200e3078009 "	true
+"451961827543.37e5642"	true
+" 2107611403.7798e039"	true
+"+.0344581871721e7229"	true
+"56614440300046e+1686"	true
+" 22709749659768580e8"	true
+"5e50 "	true
+"28172"	true
+"707e8"	true
+".2854"	true
+"65992"	true
+"16.34"	true
+"+8230"	true
+"71e86"	true
+"80.24"	true
+"86.e3"	true
+"05.  "	true
+".022 "	true
+"+0619"	true
+"9.956"	true
+"249e6"	true
+"82938"	true
+"33314"	true
+".3849"	true
+"67593"	true
+"-788f"	false
+".0487"	true
+"197e0"	true
+"676.5"	true
+".0277"	true
+"6e117"	true
+"61e8 "	true
+"94617"	true
+"8.e74"	true
+".8e44"	true
+"3.032"	true
+"8.329"	true
+"1839."	true
+"7.766"	true
+"5225."	true
+" -391"	true
+"67e60"	true
+" 78.9"	true
+"1936."	true
+"8e373"	true
+".0431"	true
+"621e4"	true
+" 42.7"	true
+"62.e3"	true
+"+.152"	true
+"+0168"	true
+"797.7"	true
+"75007"	true
+"  669"	true
+"398e3"	true
+"478. "	true
+"1.601"	true
+"85e99"	true
+"89026"	true
+"24464"	true
+"8.181"	true
+"3e74 "	true
+"8e90 "	true
+" 28. "	true
+"260.3"	true
+"26645"	true
+"-4981"	true
+"9.2  "	true
+"41146"	true
+".69e1"	true
+"30558"	true
+"6238."	true
+"+75.1"	true
+"90564"	true
+".3026"	true
+"30633"	true
+"9.e32"	true
+"+6105"	true
+"80156"	true
+"3e387"	true
+"93.13"	true
+"66575"	true
+" 300 "	true
+"00565"	true
+".55e3"	true
+"296e6"	true
+".3635"	true
+"955e5"	true
+"9.0e7"	true
+"927.0"	true
+"42345"	true
+"67e46"	true
+"0.7e2"	true
+".937 "	true
+"22862"	true
+"8394 "	true
+"5e258"	true
+"81e+0"	true
+"6e797"	true
+"6e404"	true
+"2.e86"	true
+"17e01"	true
+"037.4"	true
+" .487"	true
+"26333"	true
+" 0.40"	true
+"93924"	true
+"942.5"	true
+"02.34"	true
+"-49e2"	true
+".06e1"	true
+"41331"	true
+"0.4e8"	true
+"2e531"	true
+"99553"	true
+"6.540"	true
+"74e93"	true
+"1.756"	true
+"11.e8"	true
+"  9.7"	true
+"+1819"	true
+" 80.8"	true
+".8957"	true
+"36064"	true
+"19687"	true
+"4039 "	true
+"0638D"	false
+"1711 "	true
+"2.712"	true
+"680.7"	true
+"+.9e3"	true
+"4110."	true
+"00690"	true
+"19693"	true
+"51998"	true
+"69.4 "	true
+"15102"	true
+"-7.62"	true
+"-0725"	true
+"-39. "	true
+"0.195"	true
+" 5.31"	true
+"5.006"	true
+"+.952"	true
+" .028"	true
+"4935."	true
+"29992"	true
+"91e66"	true
+"32.40"	true
+"64.88"	true
+".7972"	true
+"8.252"	true
+"98e59"	true
+"44e56"	true
+"1e686"	true
+"-.01 "	true
+"563e8"	true
+"6196."	true
+" 6557"	true
+"+1892"	true
+"54.60"	true
+"805e6"	true
+"09299"	true
+".4586"	true
+"3900."	true
+"72241"	true
+"81713"	true
+"  130"	true
+"3.088"	true
+"22473"	true
+"7e179"	true
+"51263"	true
+"64e62"	true
+"55375"	true
+".5763"	true
+"59240"	true
+"+7734"	true
+"21e40"	true
+"87.93"	true
+"0e49 "	true
+"56e+9"	true
+"6e16 "	true
+"41.63"	true
+"9.247"	true
+" -.94"	true
+" 195 "	true
+"50320"	true
+"575e5"	true
+"13034"	true
+"9384."	true
+".8e59"	true
+" 312."	true
+"2e730"	true
+".86e4"	true
+"+0638"	true
+"+9.94"	true
+".6830"	true
+"89.62"	true
+"597e1"	true
+"20506"	true
+"92.e5"	true
+".9722"	true
