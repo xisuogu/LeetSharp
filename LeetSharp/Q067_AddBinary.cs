@@ -19,7 +19,43 @@ namespace LeetSharp
     {
         public string AddBinary(string a, string b)
         {
-            return null;
+            int newLength = Math.Max(a.Length, b.Length) + 1;
+            int[] result = new int[newLength];
+            int index = 0;
+            for (int i = a.Length - 1; i >= 0; i--)
+            {
+                if (a[i] == '1')
+                {
+                    result[index] = 1;
+                }
+                index++;
+            }
+            index = 0;
+            for (int j = b.Length - 1; j >= 0; j--)
+            {
+                if (b[j] == '1') // add b[j] to res[index]
+                {
+                    int carry = 1;
+                    int tmpIndex = index;
+                    while (carry > 0)
+                    {
+                        if (result[tmpIndex] == 0)
+                        {
+                            carry = 0;
+                            result[tmpIndex] = 1;
+                        }
+                        else
+                        {
+                            result[tmpIndex] = 0;
+                        }
+                        tmpIndex++;
+                    }
+                }
+                index++;
+            }
+            string answer = String.Join("", result.Reverse()).TrimStart('0');
+            answer = answer.Length == 0 ? "0" : answer;
+            return answer;
         }
 
         public string SolveQuestion(string input)

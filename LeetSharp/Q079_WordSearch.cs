@@ -29,8 +29,48 @@ namespace LeetSharp
     public class Q079_WordSearch
     {
         public bool Exist(string[] board, string word)
-        {            
+        {
+            int height = board.Length;
+            int width = board[0].Length;
+            bool[,] visited = new bool[board.Length, board[0].Length];
+            for (int r = 0; r < height; r++)
+            {
+                for (int c = 0; c < width; c++)
+                {
+                    if (board[r][c] == word[0])
+                    {
+                        if (Find(board, r, c, word, 0, visited))
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
             return false;
+        }
+
+        private bool Find(string[] board, int rStart, int cStart, string word, int index, bool[,] visited)
+        {
+            if (rStart < 0 || rStart >= board.Length || cStart< 0 || cStart >= board[0].Length)
+            {
+                return false;
+            }
+            if (visited[rStart, cStart] || board[rStart][cStart] != word[index])
+            {
+                return false;
+            }
+            if (index == word.Length - 1)
+            {
+                return true;
+            }
+            visited[rStart, cStart] = true;
+            // find 4 directions
+            bool result = Find(board, rStart - 1, cStart, word, index + 1, visited) ||
+                Find(board, rStart + 1, cStart, word, index + 1, visited) ||
+                Find(board, rStart, cStart - 1, word, index + 1, visited) ||
+                Find(board, rStart, cStart + 1, word, index + 1, visited);
+            visited[rStart, cStart] = false;
+            return result;
         }
 
         public string SolveQuestion(string input)

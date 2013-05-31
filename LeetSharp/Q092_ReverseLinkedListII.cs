@@ -23,7 +23,29 @@ namespace LeetSharp
     {
         public ListNode<int> ReverseBetween(ListNode<int> head, int m, int n)
         {
-            return null;
+            if (m == n)
+            {
+                return head;
+            }
+            // find pre-changing head
+            ListNode<int> dummy = new ListNode<int>(0);
+            dummy.Next = head;
+            var preChaningHead = dummy;
+            int changeLength = n - m;
+            while (m-- > 1)
+            {
+                preChaningHead = preChaningHead.Next;
+            }
+            var curNode = preChaningHead.Next;
+            for (int i = 0; i < changeLength; i++)
+            {
+                var preNext = preChaningHead.Next;
+                var curNext = curNode.Next;
+                curNode.Next = curNext.Next;
+                preChaningHead.Next = curNext;
+                curNext.Next = preNext;
+            }
+            return dummy.Next;
         }
 
         public string SolveQuestion(string input)

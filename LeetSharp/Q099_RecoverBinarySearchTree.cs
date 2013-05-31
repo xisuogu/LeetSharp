@@ -19,7 +19,31 @@ namespace LeetSharp
     {
         public BinaryTree RecoverTree(BinaryTree root)
         {
-            return null;
+            BinaryTree n1 = null;
+            BinaryTree n2 = null;
+            bool findingN2 = false;
+            int last = int.MinValue;
+            foreach (var cur in root.InOrderBinaryTree())
+            {
+                if (cur.Value <= last) // desending
+                {
+                    n2 = cur;
+                    findingN2 = true;
+                }
+                else
+                {
+                    if (!findingN2)
+                    {
+                        n1 = cur;
+                    }
+                }
+                last = cur.Value;
+            }
+
+            int tmp = n1.Value;
+            n1.Value = n2.Value;
+            n2.Value = tmp;
+            return root;
         }
 
         public string SolveQuestion(string input)

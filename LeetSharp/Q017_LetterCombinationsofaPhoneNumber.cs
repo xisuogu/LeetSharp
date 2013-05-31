@@ -17,9 +17,37 @@ namespace LeetSharp
     [TestClass]
     public class Q017_LetterCombinationsofaPhoneNumber
     {
+        private Dictionary<char, char[]> mapping = new Dictionary<char, char[]>()
+        {
+            {'2', new [] {'a', 'b', 'c'} },
+            {'3', new [] {'d', 'e', 'f'} },
+            {'4', new [] {'g', 'h', 'i'} },
+            {'5', new [] {'j', 'k', 'l'} },
+            {'6', new [] {'m', 'n', 'o'} },
+            {'7', new [] {'p', 'q', 'r', 's'} },
+            {'8', new [] {'t', 'u', 'v'} },
+            {'9', new [] {'w', 'x', 'y', 'z'} },
+        };
+
         public string[] LetterCombinations(string digits)
         {
-            return null;
+            List<string> tmp = new List<string>() { "" };
+            int length = digits.Length;
+            List<char[]> keys = new List<char[]>();
+            digits.ToList().ForEach(c => keys.Add(mapping[c]));
+            for (int i = 0; i < keys.Count; i++)
+            {
+                List<string> newTmp = new List<string>();
+                foreach (var s in tmp)
+                {
+                    foreach (var c in keys[i])
+                    {
+                        newTmp.Add(s + c);
+                    }
+                }
+                tmp = newTmp;
+            }
+            return tmp.ToArray();
         }
 
         public string SolveQuestion(string input)

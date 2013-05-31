@@ -17,7 +17,26 @@ namespace LeetSharp
     {
         public int TrapWater(int[] inputs)
         {
-            return -1;
+            int[] leftHighestArr = new int[inputs.Length];
+            int[] rightHighestArr = new int[inputs.Length];
+            int leftHighest = 0;
+            for (int i = 0; i < inputs.Length; i++)
+            {
+                leftHighest = Math.Max(leftHighest, inputs[i]);
+                leftHighestArr[i] = leftHighest;
+            }
+            int rightHighest = 0;
+            for (int j = inputs.Length - 1; j >= 0; j--)
+            {
+                rightHighest = Math.Max(rightHighest, inputs[j]);
+                rightHighestArr[j] = rightHighest;
+            }
+            int answer = 0;
+            for (int i = 0; i < inputs.Length; i++)
+            {
+                answer += Math.Min(leftHighestArr[i], rightHighestArr[i]) - inputs[i];
+            }
+            return answer;
         }
 
         public string SolveQuestion(string input)

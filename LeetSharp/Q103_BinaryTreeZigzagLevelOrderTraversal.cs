@@ -31,7 +31,50 @@ namespace LeetSharp
     {
         public int[][] ZigzagLevelOrder(BinaryTree root)
         {
-            return null;
+            List<int[]> result = new List<int[]>();
+            var s1 = new Stack<BinaryTree>();
+            var s2 = new Stack<BinaryTree>();
+            int level = 0;
+            if (root != null)
+            {
+                s1.Push(root);
+            }
+            while (s1.Count > 0 || s2.Count > 0)
+            {
+                var currentStack = level % 2 == 0 ? s1 : s2;
+                var nextStack = level % 2 == 1 ? s1 : s2;
+                List<int> levelEle = new List<int>();
+                while (currentStack.Count > 0)
+                {
+                    var node = currentStack.Pop();
+                    levelEle.Add(node.Value);
+                    if (level % 2 == 0)
+                    {
+                        if (node.Left != null)
+                        {
+                            nextStack.Push(node.Left);
+                        }
+                        if (node.Right != null)
+                        {
+                            nextStack.Push(node.Right);
+                        }
+                    }
+                    else
+                    {
+                        if (node.Right != null)
+                        {
+                            nextStack.Push(node.Right);
+                        }
+                        if (node.Left != null)
+                        {
+                            nextStack.Push(node.Left);
+                        }
+                    }
+                }
+                result.Add(levelEle.ToArray());
+                level++;
+            }
+            return result.ToArray();
         }
 
         public string SolveQuestion(string input)

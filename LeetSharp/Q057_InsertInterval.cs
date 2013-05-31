@@ -24,7 +24,38 @@ namespace LeetSharp
     {
         public int[][] Insert(int[][] intervals, int[] newInterval)
         {
-            return null;
+            List<int[]> result = new List<int[]>();
+            var tuples = intervals.Select(i => Tuple.Create(i[0], i[1])).ToArray();
+            int mergedLow = newInterval[0];
+            int mergedHigh = newInterval[1];
+            bool mergedWritten = false;
+            for (int i = 0; i < tuples.Length; i++)
+            {
+                var currentTuple = tuples[i];
+                if (currentTuple.Item1 > mergedHigh) // curent token is ahead merging one, merging complete
+                {
+                    if (!mergedWritten)
+                    {
+                        mergedWritten = true;
+                        result.Add(new int[] { mergedLow, mergedHigh });
+                    }
+                    result.Add(new int[] { currentTuple.Item1, currentTuple.Item2 });
+                }
+                else if (currentTuple.Item2 < mergedLow)
+                {
+                    result.Add(new int[] { currentTuple.Item1, currentTuple.Item2 });
+                }
+                else // current tuple has overlap with merging one
+                {
+                    mergedLow = Math.Min(mergedLow, currentTuple.Item1);
+                    mergedHigh = Math.Max(mergedHigh, currentTuple.Item2);
+                }
+            }
+            if (!mergedWritten) // from inmerging to non-imerging
+            {
+                result.Add(new int[] { mergedLow, mergedHigh });
+            }
+            return result.ToArray();
         }
 
         public string SolveQuestion(string input)

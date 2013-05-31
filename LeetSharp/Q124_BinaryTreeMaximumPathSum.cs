@@ -24,7 +24,34 @@ namespace LeetSharp
     {
         public int MaxPathSum(BinaryTree root)
         {
-            return -1;
+            var tup = MaxPathSumInternal(root);
+            return tup.Item2;
+        }
+
+        // Item1, answer that including root, can be combine with upstream node, so it can only connect to 1 child
+        // Item2, answer
+        private Tuple<int, int> MaxPathSumInternal(BinaryTree root)
+        {
+            if (root == null)
+            {
+                return Tuple.Create(int.MinValue, int.MinValue);
+            }
+            var leftMax = MaxPathSumInternal(root.Left);
+            var rightMax = MaxPathSumInternal(root.Right);
+
+            int includeSelfAnswer = root.Value;
+            int biggerChildChainAnswer = Math.Max(leftMax.Item1, rightMax.Item1);
+            if (biggerChildChainAnswer > 0)
+            {
+                includeSelfAnswer += biggerChildChainAnswer;
+            }
+
+            int excludeSelfAnswer = Math.Max(leftMax.Item2, rightMax.Item2);
+            int currentMaxAnswer = root.Value;
+            currentMaxAnswer += Math.Max(0, leftMax.Item1);
+            currentMaxAnswer += Math.Max(0, rightMax.Item1);
+            int answer = Math.Max(excludeSelfAnswer, currentMaxAnswer);
+            return Tuple.Create(includeSelfAnswer, answer);
         }
 
         public string SolveQuestion(string input)

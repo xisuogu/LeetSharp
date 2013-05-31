@@ -18,7 +18,36 @@ namespace LeetSharp
     {
         public ListNode<int> RotateRight(ListNode<int> head, int n)
         {
-            return null;
+            if (head == null)
+            {
+                return null;
+            }
+            // calc length first
+            int length = 1;
+            var tail = head;
+            while (tail.Next != null)
+            {
+                length++;
+                tail = tail.Next;
+            }
+            if (length <= 1)
+            {
+                return head;
+            }
+            n = n % length;
+            if (n == 0)
+            {
+                return head;
+            }
+            var newTail = head;
+            for (int i = 0; i < length - 1 - n; i++)
+            {
+                newTail = newTail.Next;
+            }
+            tail.Next = head;
+            head = newTail.Next;
+            newTail.Next = null;
+            return head;
         }
 
         public string SolveQuestion(string input)

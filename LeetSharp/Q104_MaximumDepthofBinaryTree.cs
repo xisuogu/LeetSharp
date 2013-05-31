@@ -16,7 +16,11 @@ namespace LeetSharp
     {
         public int MaxDepth(BinaryTree root)
         {
-            return -1;
+            if (root == null)
+            {
+                return 0;
+            }
+            return 1 + Math.Max(MaxDepth(root.Left), MaxDepth(root.Right));
         }
 
         public string SolveQuestion(string input)

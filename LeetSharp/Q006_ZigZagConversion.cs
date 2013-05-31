@@ -24,7 +24,31 @@ namespace LeetSharp
     {
         public string Convert(string s, int nRows)
         {
-            return null;
+            if (nRows == 1)
+            {
+                return s;
+            }
+            StringBuilder sb = new StringBuilder(s.Length);
+            int hopSum = nRows * 2 - 2;
+            for (int r = 0; r < nRows; r++)
+            {
+                // every line, hop1, hop2, hop1, hop2.... 
+                // hop1 + hop2 = nRows * 2 -2
+                // hop1 = n*2 - (r+1) * 2
+                int startIndex = r;
+                int hop = nRows * 2 - (r + 1) * 2;
+                while (startIndex <= s.Length - 1)
+                {
+                    sb.Append(s[startIndex]);
+                    if (hop == 0)
+                    {
+                        hop = hopSum - hop;
+                    }
+                    startIndex += hop;
+                    hop = hopSum - hop;
+                }
+            }
+            return sb.ToString();
         }
 
         public string SolveQuestion(string input)

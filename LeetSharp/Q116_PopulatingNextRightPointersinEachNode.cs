@@ -43,7 +43,49 @@ namespace LeetSharp
     {
         public TreeNodeWithNext Connect(BinaryTree input)
         {
-            return null;
+            TreeNodeWithNext root = input.ConvertToTreeNodeWithNext();
+            root = ConnectRec(root, null);
+            return root;
+        }
+
+        private TreeNodeWithNext ConnectRec(TreeNodeWithNext cur, TreeNodeWithNext parent)
+        {
+            if (parent != null && parent.Next != null)
+            {
+                while (parent.Next != null && parent.Next.Left == null && parent.Next.Right == null)
+                {
+                    parent = parent.Next;
+                }
+                if (parent.Next != null)
+                {
+                    if (parent.Next.Left != null)
+                    {
+                        cur.Next = parent.Next.Left;
+                    }
+                    else if (parent.Next.Right != null)
+                    {
+                        cur.Next = parent.Next.Right;
+                    }
+                }
+            }
+            if (cur != null)
+            {
+                if (cur.Left != null && cur.Right != null)
+                {
+                    cur.Left.Next = cur.Right;
+                    ConnectRec(cur.Right, cur);
+                    ConnectRec(cur.Left, null);
+                }
+                else if (cur.Left != null)
+                {
+                    ConnectRec(cur.Left, cur);
+                }
+                else if (cur.Right != null)
+                {
+                    ConnectRec(cur.Right, cur);
+                }
+            }
+            return cur;
         }
 
         public string SolveQuestion(string input)

@@ -28,7 +28,29 @@ namespace LeetSharp
     {
         public int UniquePathsWithObstacles(int[][] obstacleGrid)
         {
-            return -1;
+            int height = obstacleGrid.Length;
+            int width = obstacleGrid[0].Length;
+            int[] temp = new int[height];
+            temp[0] = 1;
+            for (int col = 0; col < width; col++)
+            {
+                if (obstacleGrid[0][col] == 1)
+                {
+                    temp[0] = 0;
+                }
+                for (int row = 1; row < height; row++)
+                {
+                    if (obstacleGrid[row][col] == 1)
+                    {
+                        temp[row] = 0;
+                    }
+                    else
+                    {
+                        temp[row] = temp[row] + temp[row - 1];
+                    }
+                }
+            }
+            return temp[height - 1];
         }
 
         public string SolveQuestion(string input)

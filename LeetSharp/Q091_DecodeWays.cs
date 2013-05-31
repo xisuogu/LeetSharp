@@ -25,7 +25,52 @@ namespace LeetSharp
     {
         public int NumDecodings(string s)
         {
-            return -1;
+            if (String.IsNullOrWhiteSpace(s))
+            {
+                return 0;
+            }
+
+            int[] answers = new int[s.Length + 1];
+            answers[s.Length] = 1;
+            answers[s.Length -1] = s[s.Length -1] == '0' ? 0:1;
+            for (int i = s.Length - 2; i >= 0; i--)
+            {
+                if (s[i + 1] == '0')
+                {
+                    if (s[i] != '1' && s[i] != '2')
+                    {
+                        return 0; // invalid
+                    }
+                    answers[i] = answers[i + 2]; // take current and next, 10 or 20
+                }
+                else
+                {
+                    if (s[i] == '1')
+                    {
+                        answers[i] = answers[i + 1] + answers[i + 2];
+                    }
+                    else if (s[i] == '2')
+                    {
+                        if (s[i + 1] == '7' || s[i + 1] == '8' || s[i + 1] == '9')
+                        {
+                            answers[i] = answers[i + 1];
+                        }
+                        else
+                        {
+                            answers[i] = answers[i + 1] + answers[i + 2];
+                        }
+                    }
+                    else if (s[i] == '0')
+                    {
+                        answers[i] = 0;
+                    }
+                    else
+                    {
+                        answers[i] = answers[i + 1];
+                    }
+                }
+            }
+            return answers[0];
         }
 
         public string SolveQuestion(string input)

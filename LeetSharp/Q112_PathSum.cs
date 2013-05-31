@@ -26,7 +26,16 @@ namespace LeetSharp
     {
         public bool HasPathSum(BinaryTree root, int sum)
         {
-            return false;
+            if (root == null)
+            {
+                return false;
+            }
+            int remaining = sum - root.Value;
+            if (remaining == 0 && root.Left == null && root.Right == null)
+            {
+                return true;
+            }
+            return HasPathSum(root.Left, remaining) || HasPathSum(root.Right, remaining);
         }
 
         public string SolveQuestion(string input)

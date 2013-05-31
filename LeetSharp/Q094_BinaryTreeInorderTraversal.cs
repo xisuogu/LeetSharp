@@ -26,7 +26,50 @@ namespace LeetSharp
     {
         public int[] InorderTraversal(BinaryTree root)
         {
-            return null;
+            List<int> result = new List<int>();
+            InorderTraversalNonRec(root, result);
+            return result.ToArray();
+        }
+
+        private void InorderTraversalNonRec(BinaryTree root, List<int> result)
+        {
+            if (root == null)
+            {
+                return;
+            }
+            Stack<BinaryTree> stack = new Stack<BinaryTree>();
+            stack.Push(root);
+            while (root.Left != null)
+            {
+                stack.Push(root.Left);
+                root = root.Left;
+            }
+            while (stack.Count > 0)
+            {
+                var tmp = stack.Pop();
+                result.Add(tmp.Value);
+                if (tmp.Right != null)
+                {
+                    stack.Push(tmp.Right);
+                    tmp = tmp.Right;
+                    while (tmp.Left!= null)
+                    {
+                        stack.Push(tmp.Left);
+                        tmp = tmp.Left;
+                    }
+                }
+            }
+        }
+
+        private void InorderTraversalRec(BinaryTree root, List<int> result)
+        {
+            if (root == null)
+            {
+                return;
+            }
+            InorderTraversalRec(root.Left, result);
+            result.Add(root.Value);
+            InorderTraversalRec(root.Right, result);
         }
 
         public string SolveQuestion(string input)

@@ -23,7 +23,23 @@ namespace LeetSharp
     {
         public int NumTrees(int n)
         {
-            return -1;
+            if (n == 1)
+            {
+                return 1;
+            }
+            int[] answers = new int[n + 1];
+            answers[0] = 1; // 0 node
+            answers[1] = 1; // 1 nodes
+            answers[2] = 2; // 2 nodes
+            for (int i = 3; i <= n; i++) // get answer i: i nodes
+            {
+                // left part can have 0 - i-1 nodes, if i nodes in all
+                for (int left = 0; left <= i - 1; left++)
+                {
+                    answers[i] += answers[left] * answers[i - left - 1];
+                }
+            }
+            return answers[n];
         }
 
         public string SolveQuestion(string input)

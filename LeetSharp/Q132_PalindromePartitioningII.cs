@@ -19,7 +19,27 @@ namespace LeetSharp
     {
         public int MinCut(string input)
         {
-            return -1;
+            int[] answer = new int[input.Length + 1]; // answer[i] means MinCut(s.SubString(i))
+            bool[,] dp = new bool[input.Length, input.Length]; // dp[i,j] means s[i]...s[j] is palindrom or not
+            // worst answer
+            for (int i = 0; i <= input.Length; i++)
+            {
+                answer[i] = input.Length - i - 1;
+            }
+            // make answer better
+            for (int s = input.Length - 2; s >= 0; s--)
+            {
+                for (int e = s; e < input.Length; e++)
+                {
+                    if (input[s] == input[e] && (e - s <= 2 || dp[s + 1, e - 1]))
+                    {
+                        dp[s, e] = true;
+                        answer[s] = Math.Min(answer[s], answer[e + 1] + 1); // split to s,e | e+1,end
+                    }
+                }
+            }
+
+            return answer[0];
         }
 
         public string SolveQuestion(string input)

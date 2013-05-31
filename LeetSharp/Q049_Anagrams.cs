@@ -16,7 +16,28 @@ namespace LeetSharp
     {
         public string[] Anagrams(string[] strs)
         {
-            return null;
+            Dictionary<string, List<int>> dic = new Dictionary<string, List<int>>();
+            for (int i = 0; i < strs.Length; i++)
+			{
+                string normalizedStr = new string(strs[i].OrderBy(c => c).ToArray());
+                if (dic.ContainsKey(normalizedStr))
+                {
+                    dic[normalizedStr].Add(i);
+                }
+                else
+                {
+                    dic[normalizedStr] = new List<int>() { i };
+                }
+            }
+            List<int> answerIndexes = new List<int>();
+            foreach (var kvp in dic)
+            {
+                if (kvp.Value.Count > 1)
+                {
+                    answerIndexes.AddRange(kvp.Value);
+                }
+            }
+            return answerIndexes.Select(i => strs[i]).ToArray();
         }
 
         public string SolveQuestion(string input)

@@ -20,7 +20,57 @@ namespace LeetSharp
     {
         public int[][] SetZeroes(int[][] matrix)
         {
-            return null;
+            int height = matrix.Length;
+            int width = matrix[0].Length;
+            bool firstRowZero = matrix[0].Any(i => i == 0);
+            bool firstColumnZero = matrix.Any(c => c[0] == 0);
+            // scan matrix except first line first column, set zero on first line first column
+            for (int r = 1; r < height; r++)
+            {
+                for (int c = 1; c < width; c++)
+                {
+                    if (matrix[r][c] == 0)
+                    {
+                        matrix[0][c] = matrix[r][0] = 0;
+                    }
+                }
+            }
+            // use the data in first row and first column to set zero
+            for (int r = 1; r < height; r++)
+            {
+                if (matrix[r][0] == 0)
+                {
+                    for (int c = 0; c < width; c++)
+                    {
+                        matrix[r][c] = 0;
+                    }
+                }
+            }
+            for (int c = 1; c < width; c++)
+            {
+                if (matrix[0][c] == 0)
+                {
+                    for (int r = 0; r < height; r++)
+                    {
+                        matrix[r][c] = 0;
+                    }
+                }
+            }
+            if (firstColumnZero)
+            {
+                for (int r = 0; r < height; r++)
+                {
+                    matrix[r][0] = 0;
+                }
+            }
+            if (firstRowZero)
+            {
+                for (int c = 0; c < width; c++)
+                {
+                    matrix[0][c] = 0;
+                }
+            }
+            return matrix;
         }
 
         public string SolveQuestion(string input)

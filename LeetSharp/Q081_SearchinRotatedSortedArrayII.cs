@@ -19,7 +19,35 @@ namespace LeetSharp
     {
         public bool SearchRotated(int[] input, int target)
         {
-            return false;
+            return SearchInternal(input, target, 0, input.Length - 1);
+        }
+
+        private bool SearchInternal(int[] a, int target, int left, int right)
+        {
+            if (left > right)
+            {
+                return false;
+            }
+            bool isForSureNormal = false;
+            if (a[left] < a[right])
+            {
+                isForSureNormal = true;
+            }
+            if (isForSureNormal && (target < a[left] || target > a[right]))
+            {
+                return false;
+            }
+            int mid = (left + right) / 2;
+            if (a[mid] == target)
+            {
+                return true;
+            }
+            bool answerRight = SearchInternal(a, target, mid + 1, right);
+            if (answerRight)
+            {
+                return true;
+            }
+            return SearchInternal(a, target, left, mid - 1); // answerLeft
         }
 
         public string SolveQuestion(string input)

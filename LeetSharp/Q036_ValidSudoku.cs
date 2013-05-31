@@ -16,7 +16,52 @@ namespace LeetSharp
     {
         public bool IsValidSudoku(int[,] board)
         {
-            return false;
+            HashSet<int> hset = new HashSet<int>();
+            // row validation
+            for (int r = 0; r < 9; r++)
+            {
+                hset.Clear();
+                for (int c = 0; c < 9; c++)
+                {
+                    int cell = board[c, r];
+                    if (cell != 0 && !hset.Add(cell))
+                    {
+                        return false;
+                    }
+                }
+            }
+            // column validation
+            for (int c = 0; c < 9; c++)
+            {
+                hset.Clear();
+                for (int r = 0; r < 9; r++)
+                {
+                    int cell = board[c, r];
+                    if (cell != 0 && !hset.Add(cell))
+                    {
+                        return false;
+                    }
+                }
+            }
+            // 9 blocks validation
+            for (int b = 0; b < 9; b++)
+            {
+                int cStart = (b % 3) * 3;
+                int rStart = (b / 3) * 3;
+                hset.Clear();
+                for (int c = cStart; c < cStart + 3; c++)
+                {
+                    for (int r = rStart; r < rStart + 3; r++)
+                    {
+                        int cell = board[c, r];
+                        if (cell != 0 && !hset.Add(cell))
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
         }
 
         public static int[,] ParseSudokuData(string s)

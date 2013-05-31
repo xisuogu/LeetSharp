@@ -21,8 +21,48 @@ namespace LeetSharp
     [TestClass]
     public class Q095_UniqueBinarySearchTreesII
     {
+        Dictionary<int, BinaryTree[]> cachedResults = new Dictionary<int, BinaryTree[]>();
         public BinaryTree[] GenerateTrees(int n)
         {
+            cachedResults[0] = new BinaryTree[1] { null };
+            cachedResults[1] = new BinaryTree[1] { new BinaryTree(1) };
+
+            for (int i = 2; i <= n; i++) // get answer i: i+1 nodes
+            {
+                if (cachedResults.ContainsKey(i))
+                {
+                    continue;
+                }
+                // left part can have 0 - i-1 nodes, if i nodes in all
+                List<BinaryTree> trees = new List<BinaryTree>();
+                for (int left = 0; left <= i - 1; left++)
+                {
+                    var root = new BinaryTree(left + 1);
+                    foreach (var possibleLeft in cachedResults[left])
+                    {
+                        foreach (var possibleRight in cachedResults[i - 1 - left])
+                        {
+                            root.Left = possibleLeft;
+                            root.Right = CloneTree(possibleRight, left + 1);
+                            trees.Add(CloneTree(root, 0));
+                        }
+                    }
+                }
+                cachedResults[i] = trees.ToArray();
+            }
+
+            return cachedResults[n];
+        }
+
+        private BinaryTree CloneTree(BinaryTree orig, int increment)
+        {
+            if (orig != null)
+            {
+                BinaryTree newRoot = new BinaryTree(orig.Value + increment);
+                newRoot.Left = CloneTree(orig.Left, increment);
+                newRoot.Right = CloneTree(orig.Right, increment);
+                return newRoot;
+            }
             return null;
         }
 

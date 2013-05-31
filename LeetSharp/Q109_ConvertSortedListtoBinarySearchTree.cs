@@ -14,7 +14,30 @@ namespace LeetSharp
     {
         public BinaryTree SortedListToBST(ListNode<int> head)
         {
-            return null;
+            // get the length of listnode
+            var tmp = head;
+            int length = 0;
+            while (tmp != null)
+            {
+                length++;
+                tmp = tmp.Next;
+            }
+            return SortedListToBST(ref head, length);
+        }
+
+        private BinaryTree SortedListToBST(ref ListNode<int> head, int length)
+        {
+            if (length == 0)
+            {
+                return null;
+            }
+            int leftLength = length / 2;
+            BinaryTree leftChild = SortedListToBST(ref head, leftLength);
+            BinaryTree root = new BinaryTree(head.Val);
+            head = head.Next; // move forward
+            root.Left = leftChild;
+            root.Right = SortedListToBST(ref head, length - 1 - leftLength);
+            return root;
         }
 
         public string SolveQuestion(string input)

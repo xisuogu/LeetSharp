@@ -16,7 +16,24 @@ namespace LeetSharp
     {
         public int MinDepth(BinaryTree root)
         {
-            return -1;
+            if (root == null)
+            {
+                return 0;
+            }
+            return MinDepthRec(root);
+        }
+
+        private int MinDepthRec(BinaryTree root)
+        {
+            if (root == null)
+            {
+                return int.MaxValue;
+            }
+            if (root.Left == null && root.Right == null)
+            {
+                return 1;
+            }
+            return 1 + Math.Min(MinDepthRec(root.Left), MinDepthRec(root.Right));
         }
 
         public string SolveQuestion(string input)

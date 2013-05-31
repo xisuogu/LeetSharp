@@ -28,9 +28,46 @@ namespace LeetSharp
     [TestClass]
     public class Q085_MaximalRectangle
     {
+        // http://yyeclipse.blogspot.com/2012/11/solving-maximal-rectangle-problem-based.html
+        // related to Q084, O(NM)
         public int MaximalRectangle(string[] matrix)
         {
-            return -1;
+            if (matrix.Length == 0)
+            {
+                return 0;
+            }
+            // from matrix, generate assistant matrix
+            int height = matrix.Length;
+            int width = matrix[0].Length;
+            int[][] assistantMatrix = new int[height][];
+            for (int i = 0; i < height; i++)
+            {
+                assistantMatrix[i] = new int[width];
+            }
+            for (int c = 0; c < width; c++)
+            {
+                int previousContinous = 0;
+                for (int r = 0; r < height; r++)
+                {
+                    if (matrix[r][c] == '0')
+                    {
+                        previousContinous = 0;
+                    }
+                    else
+                    {
+                        assistantMatrix[r][c] = previousContinous + 1;
+                        previousContinous++;
+                    }
+                }
+            }
+            // for each row, calculate histogram, via Q084
+            int answer = 0;
+            Q084_LargestRectangleinHistogram q = new Q084_LargestRectangleinHistogram();
+            for (int r = 0; r < assistantMatrix.Length; r++)
+            {
+                answer = Math.Max(answer, q.LargestRectangleArea(assistantMatrix[r]));
+            }
+            return answer;
         }
 
         public string SolveQuestion(string input)

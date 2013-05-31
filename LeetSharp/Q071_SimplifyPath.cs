@@ -24,7 +24,23 @@ namespace LeetSharp
     {
         public string SimplifyPath(string path)
         {
-            return null;
+            Stack<string> pathStack = new Stack<string>();
+            var tokens = path.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            for (int i = 0; i < tokens.Length; i++)
+            {
+                if (tokens[i] == "..")
+                {
+                    if (pathStack.Count > 0)
+                    {
+                        pathStack.Pop();
+                    }
+                }
+                else if (tokens[i] != ".")
+                {
+                    pathStack.Push(tokens[i]);
+                }
+            }
+            return "/" + String.Join("/", pathStack.Reverse().ToArray());
         }
 
         public string SolveQuestion(string input)

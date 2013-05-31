@@ -28,7 +28,16 @@ namespace LeetSharp
     {
         public int MinimumTotal(int[][] triangle)
         {
-            return -1;
+            // from bottom to top, calc the answer and set the answer in the cell
+            int levels = triangle.Length;
+            for (int l = levels - 2; l >= 0; l--)
+            {
+                for (int i = 0; i <= l; i++)
+                {
+                    triangle[l][i] = triangle[l][i] + Math.Min(triangle[l + 1][i], triangle[l + 1][i + 1]);
+                }
+            }
+            return triangle[0][0];
         }
 
         public string SolveQuestion(string input)

@@ -19,7 +19,32 @@ namespace LeetSharp
     {
         public int ThreeSumClosest(int[] num, int target)
         {
-            return -1;
+            // O(N^2)
+            num = num.OrderBy(n => n).ToArray();
+            int diff = num[0] + num[1] + num[2] - target;
+            for (int i = 0; i < num.Length - 2; i++)
+            {
+                int left = i + 1;
+                int right = num.Length - 1;
+                while (left < right)
+                {
+                    int newDiff = num[i] + num[left] + num[right] - target;
+                    if (newDiff == 0)
+                    {
+                        return target;
+                    }
+                    else if (newDiff > 0)
+                    {
+                        right--;
+                    }
+                    else
+                    {
+                        left++;
+                    }
+                    diff = Math.Abs(newDiff) < Math.Abs(diff) ? newDiff : diff;
+                }
+            }
+            return target + diff;
         }
 
         public string SolveQuestion(string input)

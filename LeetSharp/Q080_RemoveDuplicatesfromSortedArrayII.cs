@@ -20,7 +20,32 @@ namespace LeetSharp
     {
         public int[] RemoveDuplicates(int[] input)
         {
-            return null;
+            int length = input.Length;
+            int write = 0;
+            int read = 1;
+            bool inTolerant = true;
+            while (read < length)
+            {
+                if (inTolerant && input[write] == input[read])
+                {
+                    inTolerant = false;
+                    write++;
+                    input[write] = input[read];
+                    read++;
+                }
+                if (read == length)
+                {
+                    break;
+                }
+                if (input[write] != input[read])
+                {
+                    write++;
+                    input[write] = input[read];
+                    inTolerant = true;
+                }
+                read++;
+            }
+            return input.Take(write + 1).ToArray();
         }
 
         public string SolveQuestion(string input)

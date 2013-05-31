@@ -23,7 +23,34 @@ namespace LeetSharp
     {
         public string CountAndSay(int n)
         {
-            return null;
+            string temp = "1";
+            for (int i = 0; i < n - 1; i++)
+            {
+                temp = ConvertString(temp);
+            }
+            return temp;
+        }
+
+        private string ConvertString(string s)
+        {
+            int read = 0;
+            StringBuilder sb = new StringBuilder();
+            while (read < s.Length)
+            {
+                int readEnd = read;
+                while (readEnd < s.Length - 1)
+                {
+                    if (s[readEnd + 1] != s[read])
+                    {
+                        break;
+                    }
+                    readEnd++;
+                }
+                sb.Append((readEnd - read + 1).ToString());
+                sb.Append(s[read]);
+                read = readEnd + 1;
+            }
+            return sb.ToString();
         }
 
         public string SolveQuestion(string input)

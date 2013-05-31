@@ -20,7 +20,38 @@ namespace LeetSharp
     {
         public bool IsValidBST(BinaryTree root)
         {
-            return false;
+            if (root == null)
+            {
+                return true;
+            }
+            int lastNode = int.MinValue;
+            Stack<BinaryTree> stack = new Stack<BinaryTree>();
+            stack.Push(root);
+            while (root.Left != null)
+            {
+                stack.Push(root.Left);
+                root = root.Left;
+            }
+            while (stack.Count > 0)
+            {
+                var tmp = stack.Pop();
+                if (lastNode >= tmp.Value)
+                {
+                    return false;
+                }
+                lastNode = tmp.Value;
+                if (tmp.Right != null)
+                {
+                    stack.Push(tmp.Right);
+                    tmp = tmp.Right;
+                    while (tmp.Left != null)
+                    {
+                        stack.Push(tmp.Left);
+                        tmp = tmp.Left;
+                    }
+                }
+            }
+            return true;
         }
 
         public string SolveQuestion(string input)

@@ -17,7 +17,36 @@ namespace LeetSharp
     {
         public ListNode<int> AddTwoNumbers(ListNode<int> l1, ListNode<int> l2)
         {
-            return null;
+            // add l2 on to l1
+            ListNode<int> current = new ListNode<int>(0);
+            var answer = current;
+            int toAdd = 0;
+            while (true)
+            {
+                current.Val += toAdd;
+                if (l1 != null)
+                {
+                    current.Val += l1.Val;
+                    l1 = l1.Next;
+                }
+                if (l2 != null)
+                {
+                    current.Val += l2.Val;
+                    l2 = l2.Next;
+                }
+                toAdd = current.Val / 10;
+                current.Val = current.Val % 10;
+                if (l1 != null || l2 != null || toAdd > 0)
+                {
+                    current.Next = new ListNode<int>(0);
+                    current = current.Next;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return answer;
         }
 
         public string SolveQuestion(string input)

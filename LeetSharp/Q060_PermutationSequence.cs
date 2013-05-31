@@ -27,7 +27,27 @@ namespace LeetSharp
     {
         public string GetPermutation(int n, int k)
         {
-            return null;
+            string result = "";
+            List<int> nums = Enumerable.Range(1, n).ToList();
+            for (int i = 0; i < n; i++)
+            {
+                int countOfRightPerm = Factorial(n - i - 1);
+                int index = (k - 1) / countOfRightPerm;
+                result += nums[index];
+                nums.RemoveAt(index);
+                k -= countOfRightPerm * index;
+            }
+            return result;
+        }
+
+        public int Factorial(int n)
+        {
+            int res = 1;
+            while (n > 0)
+            {
+                res *= n--;
+            }
+            return res;
         }
 
         public string SolveQuestion(string input)

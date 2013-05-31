@@ -22,7 +22,31 @@ namespace LeetSharp
     {
         public int LengthOfLastWord(string input)
         {
-            return -1;
+            int endOfLastWord = 0;
+            bool inLastWord = false;
+            for (int i = input.Length - 1; i >= 0; i--)
+            {
+                if (input[i] == ' ')
+                {
+                    if (inLastWord)
+                    {
+                        return endOfLastWord - i;
+                    }
+                }
+                else
+                {
+                    if (!inLastWord)
+                    {
+                        inLastWord = true;
+                        endOfLastWord = i;
+                    }
+                }
+            }
+            if (inLastWord)
+            {
+                return endOfLastWord + 1;
+            }
+            return 0;
         }
 
         public string SolveQuestion(string input)

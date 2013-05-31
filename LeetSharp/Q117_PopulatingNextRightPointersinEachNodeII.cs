@@ -35,7 +35,8 @@ namespace LeetSharp
     {
         public TreeNodeWithNext Connect(BinaryTree input)
         {
-            return null;
+            Q116_PopulatingNextRightPointersinEachNode q = new Q116_PopulatingNextRightPointersinEachNode();
+            return q.Connect(input);
         }
 
         public string SolveQuestion(string input)

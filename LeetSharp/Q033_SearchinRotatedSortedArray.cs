@@ -20,7 +20,31 @@ namespace LeetSharp
     {
         public int Search(int[] a, int target)
         {
-            return -1;
+            return SearchInternal(a, target, 0, a.Length - 1);
+        }
+
+        private int SearchInternal(int[] a, int target, int left, int right)
+        {
+            if (left > right)
+            {
+                return -1;
+            }
+            bool isShifted = a[left] > a[right];
+            if (!isShifted && (target < a[left] || target > a[right]))
+            {
+                return -1;
+            }
+            int mid = (left + right) / 2;
+            if (a[mid] == target)
+            {
+                return mid;
+            }
+            int answerRight = SearchInternal(a, target, mid + 1, right);
+            if (answerRight != -1)
+            {
+                return answerRight;
+            }
+            return SearchInternal(a, target, left, mid - 1); // answerLeft
         }
 
         public string SolveQuestion(string input)

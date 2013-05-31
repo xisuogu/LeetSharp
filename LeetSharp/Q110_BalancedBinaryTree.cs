@@ -15,9 +15,31 @@ namespace LeetSharp
     [TestClass]
     public class Q110_BalancedBinaryTree
     {
+        // max depth - min depth <= 1
         public bool IsBalanced(BinaryTree root)
         {
-            return false;
+            if (root == null)
+            {
+                return true;
+            }
+            if (!IsBalanced(root.Left))
+            {
+                return false;
+            }
+            if (!IsBalanced(root.Right))
+            {
+                return false;
+            }
+            return Math.Abs(MaxDepth(root.Left) - MaxDepth(root.Right)) <= 1;
+        }
+
+        public int MaxDepth(BinaryTree root)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+            return 1 + Math.Max(MaxDepth(root.Left), MaxDepth(root.Right));
         }
 
         public string SolveQuestion(string input)

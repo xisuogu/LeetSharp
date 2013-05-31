@@ -25,7 +25,31 @@ namespace LeetSharp
     {
         public int[][] Combinations(int n, int k)
         {
-            return null;
+            List<int[]> result = new List<int[]>();
+            int[] tmp = new int[k];
+            CombinationRec(n, k, 1, 0, result, tmp);
+            return result.ToArray();
+        }
+
+        private void CombinationRec(int n, int k, int currentN, int currentPossion, List<int[]> result, int[] tmp)
+        {
+            if (currentPossion == k)
+            {
+                return;
+            }
+            tmp[currentPossion] = currentN;
+            if (currentPossion == k - 1) // filled in last element, add this to result
+            {
+                result.Add(tmp.ToArray());
+            }
+            else
+            {
+                CombinationRec(n, k, currentN + 1, currentPossion + 1, result, tmp);
+            }
+            if ((n - currentN) > (k - 1 - currentPossion)) // still have chance to SayNO
+            {
+                CombinationRec(n, k, currentN + 1, currentPossion, result, tmp);
+            }
         }
 
         public string SolveQuestion(string input)

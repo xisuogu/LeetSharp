@@ -19,7 +19,25 @@ namespace LeetSharp
     {
         public int[][] Rotate(int[][] matrix)
         {
-            return null;
+            // rotate layer by layer, from outer most to inner most
+            int length = matrix[0].Length;
+            int lower = 0;
+            int higher = length - 1; // e.g, 4*4 matrix, starting from 0, 3, then 1, 2
+            while (lower < higher)
+            {
+                for (int c = lower; c < higher; c++)
+                {
+                    // swap 4 elements
+                    int tmp = matrix[lower][c];
+                    matrix[lower][c] = matrix[length - 1 - c][lower];
+                    matrix[length - 1 - c][lower] = matrix[higher][length - 1 - c];
+                    matrix[higher][length - 1 - c] = matrix[c][higher];
+                    matrix[c][higher] = tmp;
+                }
+                lower++;
+                higher--;
+            }
+            return matrix;
         }
 
         public string SolveQuestion(string input)

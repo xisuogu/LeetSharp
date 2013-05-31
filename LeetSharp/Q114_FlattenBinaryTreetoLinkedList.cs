@@ -35,7 +35,25 @@ namespace LeetSharp
     {
         public BinaryTree Flatten(BinaryTree root)
         {
-            return null;
+            if (root == null)
+            {
+                return null;
+            }
+            root.Left = Flatten(root.Left);
+            root.Right = Flatten(root.Right);
+            if (root.Left == null)
+            {
+                return root;
+            }
+            var rightMostInLeft = root.Left;
+            while (rightMostInLeft.Right != null)
+            {
+                rightMostInLeft = rightMostInLeft.Right;
+            }
+            rightMostInLeft.Right = root.Right;
+            root.Right = root.Left;
+            root.Left = null;
+            return root;
         }
 
         public string SolveQuestion(string input)

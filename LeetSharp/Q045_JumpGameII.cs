@@ -21,9 +21,56 @@ namespace LeetSharp
     [TestClass]
     public class Q045_JumpGameII
     {
+        // dp for this is still too slow, use greedy
         public int Jump(int[] input)
         {
-            return -1;
+            int currentLow = 0;
+            int currentHigh = 0;
+            int answer = 0;
+            if (input.Length == 1)
+            {
+                return 0;
+            }
+            while (currentHigh < input.Length - 1)
+            {
+                answer++; // jump ahead
+                int nextHigh = currentHigh + 1;
+                for (int i = currentLow; i <= currentHigh; i++)
+                {
+                    if (i + input[i] >= input.Length - 1)
+                    {
+                        return answer;
+                    }
+                    nextHigh = Math.Max(nextHigh, i + input[i]);
+                }
+                currentLow = currentHigh + 1;
+                currentHigh = nextHigh;
+            }
+            return answer;
+        }
+
+        private int JumpDP(int[] input)
+        {
+            int[] dp = new int[input.Length]; // dp[i] = from i to end, min jump count
+            dp[input.Length - 1] = 0;
+            for (int i = input.Length - 2; i >= 0; i--)
+            {
+                int maxJumpLength = input[i];
+                if (maxJumpLength >= (input.Length - 1 - i))
+                {
+                    dp[i] = 1;
+                }
+                else
+                {
+                    int tmpAnswer = int.MaxValue;
+                    for (int j = maxJumpLength; j > 0; j--)
+                    {
+                        tmpAnswer = Math.Min(tmpAnswer, dp[i + j]);
+                    }
+                    dp[i] = tmpAnswer == int.MaxValue ? int.MaxValue : tmpAnswer + 1;
+                }
+            }
+            return dp[0];
         }
 
         public string SolveQuestion(string input)

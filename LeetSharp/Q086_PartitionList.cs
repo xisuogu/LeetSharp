@@ -21,7 +21,30 @@ namespace LeetSharp
     {
         public ListNode<int> Partition(ListNode<int> head, int x)
         {
-            return null;
+            ListNode<int> dummy = new ListNode<int>(0);
+            dummy.Next = head;
+            ListNode<int> smallPart = dummy;
+            while (smallPart != null && smallPart.Next != null)
+            {
+                while (smallPart != null && smallPart.Next != null && smallPart.Next.Val < x)
+                {
+                    smallPart = smallPart.Next;
+                } // smallPart is smaller than x, its next is GE x
+                var bigPart = smallPart.Next;
+                while (bigPart != null && bigPart.Next != null && bigPart.Next.Val >= x)
+                {
+                    bigPart = bigPart.Next;
+                }
+                if (bigPart != null && bigPart.Next != null) // bigPart.Next should be moved before
+                {
+                    var nextToBig = bigPart.Next;
+                    bigPart.Next = nextToBig.Next;
+                    nextToBig.Next = smallPart.Next;
+                    smallPart.Next = nextToBig;
+                }
+                smallPart = smallPart.Next;
+            }
+            return dummy.Next;
         }
 
         public string SolveQuestion(string input)

@@ -18,7 +18,26 @@ namespace LeetSharp
     {
         public string[] GenerateParenthesis(int n)
         {
-            return null;
+            List<string> answer = new List<string>();
+            GenerateParenthesisRecursive(n, n, answer, "");
+            answer.Sort();
+            return answer.ToArray();
+        }
+
+        private void GenerateParenthesisRecursive(int leftRemaining, int rightRemaining, List<string> answer, string current)
+        {
+            if (leftRemaining == 0 && rightRemaining == 0)
+            {
+                answer.Add(current);
+            }
+            if (leftRemaining < rightRemaining)
+            {
+                GenerateParenthesisRecursive(leftRemaining, rightRemaining - 1, answer, current + ")");
+            }
+            if (leftRemaining > 0)
+            {
+                GenerateParenthesisRecursive(leftRemaining - 1, rightRemaining, answer, current + "(");
+            }
         }
 
         public string SolveQuestion(string input)

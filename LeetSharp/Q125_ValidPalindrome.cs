@@ -23,7 +23,36 @@ namespace LeetSharp
     {
         public bool IsPalindrome(string s)
         {
-            return false;
+            if (s.Length <= 1)
+            {
+                return true;
+            }
+            int left = 0;
+            int right = s.Length - 1;
+            while (left < right)
+            {
+                while (left <= s.Length - 1 && !char.IsLetterOrDigit(s[left]))
+                {
+                    left++;
+                }
+                while (right >= 0 && !char.IsLetterOrDigit(s[right]))
+                {
+                    right--;
+                }
+                if (left <= s.Length - 1 && right >= 0)
+                {
+                    if (char.ToLower(s[left]) == char.ToLower(s[right]))
+                    {
+                        left++;
+                        right--;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            return left >= right;
         }
 
         public string SolveQuestion(string input)

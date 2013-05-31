@@ -30,7 +30,42 @@ namespace LeetSharp
     {
         public int[][] LevelOrder(BinaryTree root)
         {
-            return null;
+            List<int[]> result = new List<int[]>();
+            if (root == null)
+            {
+                return result.ToArray();
+            }
+            Queue<BinaryTree> q = new Queue<BinaryTree>();
+            q.Enqueue(root);
+            q.Enqueue(null); // indicate end of level
+            List<int> tmp = new List<int>();
+            while (q.Count > 0)
+            {
+                var cur = q.Dequeue();
+                if (cur == null)
+                {
+                    result.Add(tmp.ToArray());
+                    tmp = new List<int>();
+                    if (q.Count == 0) // end of tree
+                    {
+                        break;
+                    }
+                    q.Enqueue(null); // end of level
+                }
+                else
+                {
+                    tmp.Add(cur.Value);
+                    if (cur.Left != null)
+                    {
+                        q.Enqueue(cur.Left);
+                    }
+                    if (cur.Right != null)
+                    {
+                        q.Enqueue(cur.Right);
+                    }
+                }
+            }            
+            return result.ToArray();
         }
 
         public string SolveQuestion(string input)

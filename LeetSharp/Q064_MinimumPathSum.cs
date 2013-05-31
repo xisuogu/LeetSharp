@@ -17,7 +17,23 @@ namespace LeetSharp
     {
         public int MinPathSum(int[][] grid)
         {
-            return -1;
+            int height = grid.Length;
+            int width = grid[0].Length;
+            int[] temp = new int[height];
+            for (int i = 0; i < height; i++)
+            {
+                temp[i] = int.MaxValue;
+            }
+            temp[0] = 0;
+            for (int c = 0; c < width; c++)
+            {
+                temp[0] = temp[0] + grid[0][c];
+                for (int r = 1; r < height; r++)
+                {
+                    temp[r] = Math.Min(temp[r - 1], temp[r]) + grid[r][c];
+                }
+            }
+            return temp[height - 1];
         }
 
         public string SolveQuestion(string input)

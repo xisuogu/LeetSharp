@@ -31,7 +31,19 @@ namespace LeetSharp
     {
         public int[][] Subsets(int[] input)
         {
-            return null;
+            List<int[]> result = new List<int[]>();
+            result.Add(new int[0]);
+            input = input.OrderBy(i => i).ToArray();
+            for (int i = 0; i < input.Length; i++)
+            {
+                int current = input[i];
+                int existingCount = result.Count;
+                for (int j = 0; j < existingCount; j++)
+                {
+                    result.Add(result[j].Concat(new[] { current }).ToArray());
+                }
+            }
+            return result.ToArray();
         }
 
         public string SolveQuestion(string input)

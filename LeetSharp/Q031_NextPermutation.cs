@@ -23,7 +23,37 @@ namespace LeetSharp
     {
         public int[] NextPermutation(int[] num)
         {
-            return null;
+            int reverseStart = 0;
+            for (int j = num.Length - 1; j >= 1; j--) // from right to left, find first descending one
+            {
+                if (num[j] > num[j - 1]) // then j-1 should increase 1 step first
+                {
+                    reverseStart = j;
+                    for (int k = num.Length - 1; k >= j; k--) // find the 1st ele, which is larger than num[j-1]
+                    {
+                        if (num[k] > num[j - 1])
+                        {
+                            int temp = num[k];
+                            num[k] = num[j - 1];
+                            num[j - 1] = temp;
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+            PartialReverse(ref num, reverseStart, num.Length - 1);
+            return num;
+        }
+
+        private void PartialReverse(ref int[] num, int start, int end)
+        {
+            while (start < end)
+            {
+                int temp = num[start];
+                num[start++] = num[end];
+                num[end--] = temp;
+            }
         }
 
         public string SolveQuestion(string input)

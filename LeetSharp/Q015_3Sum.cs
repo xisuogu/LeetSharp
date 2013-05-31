@@ -24,7 +24,35 @@ namespace LeetSharp
     {
         public int[][] ThreeSum(int[] num)
         {
-            return null;
+            List<int[]> result = new List<int[]>();
+            var sortedNums = num.OrderBy(n => n).ToArray(); // sort first
+            for (int i = 0; i < sortedNums.Length - 2; i++)
+            {
+                int left = i + 1;
+                int right = sortedNums.Length - 1;
+                while (left < right)
+                {
+                    int tmp = sortedNums[i] + sortedNums[left] + sortedNums[right];
+                    if (tmp > 0)
+                    {
+                        right--;
+                    }
+                    else if (tmp < 0)
+                    {
+                        left++;
+                    }
+                    else
+                    {
+                        if (!result.Any(r => r[0] == sortedNums[i] && r[1] == sortedNums[left] && r[2] == sortedNums[right]))
+                        {
+                            result.Add(new[] { sortedNums[i], sortedNums[left], sortedNums[right] });
+                        }
+                        right--;
+                        left++;
+                    }
+                }
+            }
+            return result.ToArray();
         }
 
         public string SolveQuestion(string input)

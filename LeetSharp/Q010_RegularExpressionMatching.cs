@@ -32,7 +32,40 @@ namespace LeetSharp
     {
         public bool IsMatch(string input, string pattern)
         {
-            return false;
+            return IsMatch(input, 0, pattern);
+        }
+
+        private bool IsMatch(string input, int startIndex, string pattern)
+        {
+            if (string.IsNullOrEmpty(pattern))
+            {
+                return startIndex == input.Length;
+            }
+            if (startIndex > input.Length)
+            {
+                return false;
+            }
+
+            if (pattern.Length > 1 && pattern[1] == '*')
+            {
+                if (pattern[0] == '.' || (startIndex < input.Length && pattern[0] == input[startIndex]))
+                {
+                    if (IsMatch(input, startIndex + 1, pattern))
+                    {
+                        return true;
+                    }
+                }
+                return IsMatch(input, startIndex, pattern.Substring(2)); // let * mean 0 occurence
+            }
+
+            if (pattern[0] == '.' || (startIndex < input.Length && pattern[0] == input[startIndex]))
+            {
+                return IsMatch(input, startIndex + 1, pattern.Substring(1));
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public string SolveQuestion(string input)

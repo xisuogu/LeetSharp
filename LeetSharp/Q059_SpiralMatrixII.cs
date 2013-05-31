@@ -24,7 +24,41 @@ namespace LeetSharp
     {
         public int[][] GenerateMatrix(int n)
         {
-            return null;
+            int[][] result = new int[n][];
+            for (int i = 0; i < n; i++)
+            {
+                result[i] = new int[n];
+            }
+            int low = 0;
+            int high = n - 1;
+            int currentEle = 1;
+            while (low < high)
+            {
+                int edge = high - low;
+                for (int i = 0; i < edge; i++)
+                {
+                    result[low][low + i] = currentEle++;
+                }
+                for (int i = 0; i < edge; i++)
+                {
+                    result[low + i][high] = currentEle++;
+                }
+                for (int i = 0; i < edge; i++)
+                {
+                    result[high][high - i] = currentEle++;
+                }
+                for (int i = 0; i < edge; i++)
+                {
+                    result[high - i][low] = currentEle++;
+                }
+                low += 1;
+                high -= 1;
+            }
+            if (low == high)
+            {
+                result[low][low] = currentEle;
+            }
+            return result;
         }
 
         public string SolveQuestion(string input)

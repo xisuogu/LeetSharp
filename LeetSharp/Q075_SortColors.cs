@@ -26,7 +26,42 @@ namespace LeetSharp
     {
         public int[] SortColors(int[] input)
         {
-            return null;
+            int zeroWrite = 0;
+            int twoWrite = input.Length - 1;
+            int scan = 0;
+            while (scan <= twoWrite)
+            {
+                if (input[scan] == 0)
+                {
+                    if (scan > zeroWrite)
+                    {
+                        input[scan] = input[zeroWrite];
+                        input[zeroWrite++] = 0;
+                    }
+                    else
+                    {
+                        scan++;
+                        zeroWrite++;
+                    }
+                }
+                else if (input[scan] == 2)
+                {
+                    if (scan < twoWrite)
+                    {
+                        input[scan] = input[twoWrite];
+                        input[twoWrite--] = 2;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                else
+                {
+                    scan++;
+                }
+            }
+            return input;
         }
 
         public string SolveQuestion(string input)

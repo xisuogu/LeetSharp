@@ -15,7 +15,18 @@ namespace LeetSharp
     {
         public double FindMedianSortedArrays(int[] a, int[] b)
         {
-            return -1f;
+            int totalLength = a.Length + b.Length;
+            int answerIndex1 = (totalLength - 1) / 2;
+            int answerIndex2 = (totalLength / 2);
+            if (a.Length == 0)
+            {
+                return (b[answerIndex1] + b[answerIndex2]) / 2.0;
+            }
+            if (b.Length == 0)
+            {
+                return (a[answerIndex1] + a[answerIndex2]) / 2.0;
+            }
+            return (GetNthFrom2Arrays(a, b, answerIndex1) + GetNthFrom2Arrays(a, b, answerIndex2)) / 2.0;
         }
 
         public int GetNthFrom2Arrays(int[] a, int[] b, int index)

@@ -14,9 +14,22 @@ namespace LeetSharp
     [TestClass]
     public class Q013_RomantoInteger
     {
+        Dictionary<string, int> lookup = RomanToIntLookup();
+
         int RomanToInt(string s)
         {
-            return -1;
+            return lookup[s];
+        }
+
+        static Dictionary<string, int> RomanToIntLookup()
+        {
+            Dictionary<string, int> res = new Dictionary<string, int>();
+            Q012_IntegertoRoman c = new Q012_IntegertoRoman();
+            for (int i = 1; i <= 3999; i++)
+            {
+                res[c.IntToRoman(i)] = i;
+            }
+            return res;
         }
 
         public string SolveQuestion(string input)

@@ -14,7 +14,57 @@ namespace LeetSharp
     {
         public int Atoi(string str)
         {
-            return -1;
+            var chars = str.ToCharArray();
+            bool inDigitState = false;
+            bool neg = false;
+            long answer = 0;
+            foreach (var c in chars)
+            {
+                if (char.IsDigit(c))
+                {
+                    inDigitState = true;
+                    answer = answer * 10 + int.Parse(c.ToString());
+                    if (answer > int.MaxValue)
+                    {
+                        return neg ? int.MinValue : int.MaxValue;
+                    }
+                }
+                else if (c == '+')
+                {
+                    if (inDigitState)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        inDigitState = true;
+                    }
+                }
+                else if (c == '-')
+                {
+                    if (inDigitState)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        neg = true;
+                        inDigitState = true;
+                    }
+                }
+                else if (c == ' ')
+                {
+                    if (inDigitState)
+                    {
+                        break;
+                    }
+                }
+                else // other char, all invalid
+                {
+                    break;
+                }
+            }
+            return neg ? 0 - (int)answer : (int)answer;
         }
 
         public string SolveQuestion(string input)

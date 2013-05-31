@@ -16,7 +16,27 @@ namespace LeetSharp
     {
         public string Multiply(string num1, string num2)
         {
-            return null;
+            int[] res = new int[num1.Length + num2.Length];
+            for (int i = num1.Length - 1; i >= 0; i--)
+            {
+                int carry = 0;
+                for (int j = num2.Length - 1; j >= 0; j--)
+                {
+                    int index = num1.Length - 1 - i + num2.Length -1 - j;
+                    res[index] += (num1[i] - '0') * (num2[j] - '0') + carry;
+                    carry = res[index] / 10;
+                    res[index] = res[index] % 10;
+                }
+                int carryIndex = num1.Length - 1 - i + num2.Length;
+                while (carry > 0)
+                {
+                    res[carryIndex] += carry;
+                    carry = res[carryIndex] / 10;
+                    res[carryIndex] = res[carryIndex] % 10;
+                }
+            }
+            string answer = String.Join("", res.Reverse()).TrimStart('0');
+            return answer == String.Empty ? "0" : answer;
         }
 
         public string SolveQuestion(string input)

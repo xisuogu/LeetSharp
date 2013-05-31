@@ -21,7 +21,25 @@ namespace LeetSharp
     {
         public bool CanJump(int[] input)
         {
-            return false;
+            int end = input.Length - 1;
+            while (end > 0)
+            {
+                bool moveBack = false;
+                for (int i = end - 1; i >= 0; i--)
+                {
+                    if (input[i] >= end - i) // from i can jump to end
+                    {
+                        end = i;
+                        moveBack = true;
+                        break;
+                    }
+                }
+                if (!moveBack)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public string SolveQuestion(string input)

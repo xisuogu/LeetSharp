@@ -22,7 +22,45 @@ namespace LeetSharp
     {
         public int[] SearchRange(int[] A, int target)
         {
-            return null;
+            return new int[] { FindEdge(A, target, true), FindEdge(A, target, false) };
+        }
+
+        private int FindEdge(int[] input, int target, bool leftMost)
+        {
+            int left = 0;
+            int right = input.Length - 1;
+            while (left <= right)
+            {
+                int mid = (left + right) / 2;
+                if (input[mid] < target)
+                {
+                    left = mid + 1;
+                }
+                else if (input[mid] > target)
+                {
+                    right = mid - 1;
+                }
+                else // found
+                {
+                    if (leftMost)
+                    {
+                        if (mid == 0 || input[mid - 1] < target)
+                        {
+                            return mid;
+                        }
+                        right = mid - 1;
+                    }
+                    else
+                    {
+                        if (mid == input.Length - 1 || input[mid + 1] > target)
+                        {
+                            return mid;
+                        }
+                        left = mid + 1;
+                    }
+                }
+            }
+            return -1;
         }
 
         public string SolveQuestion(string input)

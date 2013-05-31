@@ -17,7 +17,18 @@ namespace LeetSharp
     {
         public int MaxSubArray(int[] input)
         {
-            return -1;
+            int answer = int.MinValue;
+            int tmp = 0;
+            for (int i = 0; i < input.Length; i++)
+            {
+                tmp += input[i];
+                answer = Math.Max(answer, tmp);
+                if (tmp < 0)
+                {
+                    tmp = 0;
+                }
+            }
+            return answer;
         }
 
         public string SolveQuestion(string input)

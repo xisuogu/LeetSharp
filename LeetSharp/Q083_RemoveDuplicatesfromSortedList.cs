@@ -18,7 +18,26 @@ namespace LeetSharp
     {
         public ListNode<int> DeleteDuplicates(ListNode<int> head)
         {
-            return null;
+            ListNode<int> dummy = new ListNode<int>(0);
+            var write = dummy;
+            while (head != null)
+            {
+                write.Next = head;
+                write = write.Next;
+                // move head to different value
+                int currentValue = head.Val;
+                head = head.Next;
+                while (head != null)
+                {
+                    if (head.Val != currentValue)
+                    {
+                        break;
+                    }
+                    head = head.Next;
+                }
+            }
+            write.Next = null;
+            return dummy.Next;
         }
 
         public string SolveQuestion(string input)

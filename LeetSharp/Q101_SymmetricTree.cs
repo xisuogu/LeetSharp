@@ -31,7 +31,24 @@ namespace LeetSharp
     {
         public bool IsSymmetric(BinaryTree root)
         {
-            return false;
+            if (root == null)
+            {
+                return true;
+            }
+            var leftRight = root.InOrderBinaryTree().ToArray();
+            if (leftRight.Length % 2 == 0)
+            {
+                return false;
+            }
+            var rightLeft = root.InOrderBinaryTreeRightToLeft().ToArray();
+            for (int i = 0; i < leftRight.Length / 2; i++)
+            {
+                if (leftRight[i].Value != rightLeft[i].Value)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public string SolveQuestion(string input)

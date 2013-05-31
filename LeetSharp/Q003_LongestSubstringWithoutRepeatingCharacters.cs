@@ -16,7 +16,37 @@ namespace LeetSharp
     {
         int LengthOfLongestSubstring(string s)
         {
-            return -1;
+            if (string.IsNullOrWhiteSpace(s))
+            {
+                return 0;
+            }
+            HashSet<char> charSet = new HashSet<char>();
+            int answer = 1;
+            var charArr = s.ToCharArray();
+            charSet.Add(charArr[0]);
+            int left = 0; int right = 1;
+            while (right < s.Length)
+            {
+                if (charSet.Add(charArr[right])) // new char
+                {
+                    int newAnswer = right - left + 1;
+                    answer = newAnswer > answer ? newAnswer : answer;
+                }
+                else
+                {
+                    while (left < right && charArr[left] != charArr[right])
+                    {
+                        charSet.Remove(charArr[left]);
+                        left++;
+                    }
+                    if (left < right)
+                    {
+                        left++;
+                    }
+                }
+                right++;
+            }
+            return answer;
         }
 
         public string SolveQuestion(string input)

@@ -40,7 +40,64 @@ namespace LeetSharp
     {
         public string[] FullJustify(string[] words, int length)
         {
-            return null;
+            List<string> result = new List<string>();
+            int currentStartIndex = 0;
+            int currentEndIndex = 0;
+            int remainingLength = length;
+            for (int i = 0; i < words.Length; i++)
+            {
+                remainingLength -= (words[i].Length + 1);
+                if (remainingLength < -1) // previous ones push into result
+                {
+                    result.Add(JustifyLine(words, currentStartIndex, currentEndIndex, length));
+                    currentStartIndex = currentEndIndex = i;
+                    remainingLength = length - (words[i].Length + 1);
+                }
+                else if (remainingLength == -1) // this one + previous ones push into result
+                {
+                    result.Add(JustifyLine(words, currentStartIndex, i, length));
+                    currentStartIndex = currentEndIndex = i + 1;
+                    remainingLength = length;
+                }
+                else
+                {
+                    currentEndIndex = i;
+                }
+            }
+            if (currentStartIndex < words.Length)
+            {
+                result.Add(JustifyLine(words, currentStartIndex, currentEndIndex, length));
+            }
+            return result.ToArray();
+        }
+
+        private string JustifyLine(string[] words, int start, int end, int length)
+        {
+            int count = end - start + 1;
+            var wordsToProcess = words.Skip(start).Take(count).ToArray();
+            if (end == words.Length - 1)
+            {
+                return String.Join(" ", wordsToProcess).PadRight(length);
+            }
+            if (count == 1)
+            {
+                return words[start].PadRight(length); // special case
+            }
+            int spaceLength = length - wordsToProcess.Sum(w => w.Length);
+            int spaceLengthMod = spaceLength % (count - 1);
+            int perSpaceLength = spaceLength / (count - 1);
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < wordsToProcess.Length - 1; i++)
+            {
+                sb.Append(wordsToProcess[i]);
+                sb.Append(new string(' ', perSpaceLength));
+                if (spaceLengthMod-- > 0)
+                {
+                    sb.Append(' ');
+                }
+            }
+            sb.Append(wordsToProcess.Last());
+            return sb.ToString();
         }
 
         public string SolveQuestion(string input)

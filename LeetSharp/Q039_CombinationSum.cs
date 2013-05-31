@@ -27,7 +27,30 @@ namespace LeetSharp
     {
         public int[][] CombinationSum(int[] candidates, int target)
         {
-            return null;
+            candidates = candidates.OrderBy(n => n).ToArray();
+            var result = CombinationSumInternal(candidates, target, 0);
+            return result.ToArray();
+        }
+
+        public List<int[]> CombinationSumInternal(int[] candidates, int target, int startIndex)
+        {
+            List<int[]> result = new List<int[]>();
+            for (int i = startIndex; i < candidates.Length; i++)
+            {
+                if (candidates[i] < target)
+                {
+                    var nextLevelResults = CombinationSumInternal(candidates, target - candidates[i], i);
+                    foreach (var nlresult in nextLevelResults)
+                    {
+                        result.Add((new[] { candidates[i] }).Concat(nlresult).ToArray());
+                    }
+                }
+                else if (candidates[i] == target)
+                {
+                    result.Add(new[] { candidates[i] });
+                }
+            }
+            return result;
         }
 
         public string SolveQuestion(string input)

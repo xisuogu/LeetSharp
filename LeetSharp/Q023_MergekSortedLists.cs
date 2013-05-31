@@ -14,7 +14,34 @@ namespace LeetSharp
     {
         public ListNode<int> MergeKLists(ListNode<int>[] lists)
         {
-            return null;
+            lists = lists.Where(l => l != null).ToArray();
+            if (lists.Length == 0)
+            {
+                return null;
+            }
+            MinHeap<ListNode<int>> heap = new MinHeap<ListNode<int>>(lists, new ListNodeComparer());
+            ListNode<int> preAnswer = new ListNode<int>(0);
+            ListNode<int> current = preAnswer;
+            while (heap.Count > 0)
+            {
+                var topList = heap.ExtractDominating();
+                current.Next = new ListNode<int>(topList.Val);
+                current = current.Next;
+
+                if (topList.Next != null)
+                {
+                    heap.Add(topList.Next);
+                }
+            }
+            return preAnswer.Next;
+        }
+
+        class ListNodeComparer : Comparer<ListNode<int>>
+        {
+            public override int Compare(ListNode<int> x, ListNode<int> y)
+            {
+                return x.Val.CompareTo(y.Val);
+            }
         }
 
         public string SolveQuestion(string input)

@@ -24,7 +24,55 @@ namespace LeetSharp
     {
         public int[] SpiralOrder(int[][] matrix)
         {
-            return null;
+            if (matrix.Length == 0)
+            {
+                return new int[0];
+            }
+            List<int> res = new List<int>();
+            int left = 0;
+            int right = matrix[0].Length - 1;
+            int top = 0;
+            int bottom = matrix.Length - 1;
+            while (left < right & top < bottom)
+            {
+                int horiLength = right - left;
+                int verticalLength = bottom - top;
+                for (int i = 0; i < horiLength; i++)
+                {
+                    res.Add(matrix[top][left + i]);
+                }
+                for (int i = 0; i < verticalLength; i++)
+                {
+                    res.Add(matrix[top + i][right]);
+                }
+                for (int i = 0; i < horiLength; i++)
+                {
+                    res.Add(matrix[bottom][right - i]);
+                }
+                for (int i = 0; i < verticalLength; i++)
+                {
+                    res.Add(matrix[bottom - i][left]);
+                }
+                left += 1;
+                right -= 1;
+                top += 1;
+                bottom -= 1;
+            }
+            if (left == right)
+            {
+                for (int i = top; i <= bottom; i++)
+                {
+                    res.Add(matrix[i][left]);
+                }
+            }
+            else if (top == bottom)
+            {
+                for (int i = left; i <= right; i++)
+                {
+                    res.Add(matrix[top][i]);
+                }
+            }
+            return res.ToArray();
         }
 
         public string SolveQuestion(string input)
