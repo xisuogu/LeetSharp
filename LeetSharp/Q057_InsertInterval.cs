@@ -24,7 +24,50 @@ namespace LeetSharp
     {
         public int[][] Insert(int[][] intervals, int[] newInterval)
         {
-            return null;
+            bool inserted = false;
+            List<int[]> resultList = new List<int[]>();
+            int min = 0, max = 0;
+            for (int i = 0; i < intervals.Length; i++)
+            {
+                int[] interval = intervals[i];
+                if (!inserted)
+                {
+                    if (newInterval[1] < interval[0])
+                    {
+                        resultList.Add(newInterval);
+                        resultList.Add(interval);
+                        inserted = true;
+                    }
+                    else if (newInterval[0] > interval[1])
+                    {
+                        resultList.Add(interval);
+                    }
+                    else
+                    {
+                        min = Math.Min(interval[0], newInterval[0]);
+                        max = Math.Max(interval[1], newInterval[1]);
+                        resultList.Add(new int[] { min, max });
+                        inserted = true;
+                    }
+                }
+                else
+                {
+                    if (interval[0] <= max)
+                    {
+                        max = Math.Max(max, interval[1]);
+                        resultList[resultList.Count - 1][1] = max;
+                    }
+                    else
+                    {
+                        resultList.Add(interval);
+                    }
+                }
+            }
+
+            if (!inserted)
+                resultList.Add(newInterval);
+
+            return resultList.ToArray();
         }
 
         public string SolveQuestion(string input)
