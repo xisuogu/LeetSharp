@@ -21,7 +21,21 @@ namespace LeetSharp
     {
         public bool CanJump(int[] input)
         {
-            return false;
+            int step = input[0];
+            for (int i = 1; i < input.Length; i++)
+            {
+                if (step > 0)
+                {
+                    step--;
+                    step = Math.Max(step, input[i]);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         public string SolveQuestion(string input)

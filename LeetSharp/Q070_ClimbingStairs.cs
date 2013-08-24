@@ -16,7 +16,23 @@ namespace LeetSharp
     {
         public int ClimbStairs(int n)
         {
-            return -1;
+            int result = n;
+            int s = 1, t = 2;            
+            for (int i = 3; i <= n; i++)
+            {
+                result = s + t;
+                s = t;
+                t = result;
+            }
+            return result;
+        }
+
+        public int ClimbStairs2(int n)
+        {
+            if (n == 1 || n == 2)
+                return n;
+
+            return ClimbStairs2(n - 1) + ClimbStairs2(n - 2);
         }
 
         public string SolveQuestion(string input)

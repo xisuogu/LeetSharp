@@ -25,7 +25,41 @@ namespace LeetSharp
     {
         public int[][] FourSum(int[] num, int target)
         {
-            return null;
+            Array.Sort(num);
+            List<int[]> resultList = new List<int[]>();
+
+            for (int i = 0; i < num.Length - 3; i++)
+            {
+                if (i > 0 && num[i] == num[i - 1])
+                    continue;
+
+                for (int v = i + 1; v < num.Length - 2; v++)
+                {
+                    if (v > i + 1 && num[v] == num[v - 1])
+                        continue;
+
+                    int j = v + 1, k = num.Length - 1;
+                    while (j < k)
+                    {
+                        int sum = num[i] + num[v] + num[j] + num[k];
+                        if (sum == target)
+                        {
+                            resultList.Add(new int[] { num[i], num[v], num[j], num[k] });
+                        }
+
+                        if (sum >= target)
+                        {
+                            while (num[k] == num[--k] && j < k) ;
+                        }
+                        if (sum <= target)
+                        {
+                            while (num[j] == num[++j] && j < k) ;
+                        }
+                    }
+                }
+            }
+
+            return resultList.ToArray();
         }
 
         public string SolveQuestion(string input)

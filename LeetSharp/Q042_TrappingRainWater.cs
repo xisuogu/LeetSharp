@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-// Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap after raining.
+// Given n non-negative integers representing an elevation map where the width of each bar is 1, 
+// compute how much water it is able to trap after raining.
 
 // For example, 
 // Given [0,1,0,2,1,0,1,3,2,1,2,1], return 6.
@@ -17,7 +18,25 @@ namespace LeetSharp
     {
         public int TrapWater(int[] inputs)
         {
-            return -1;
+            int result = 0;
+            int maxHigh = 0;
+            int[] highest = new int[inputs.Length];
+            for (int i = 0; i < inputs.Length; i++)
+            {
+                highest[i] = maxHigh;
+                maxHigh = Math.Max(inputs[i], maxHigh);
+            }
+            maxHigh = 0;
+            for (int i = inputs.Length - 1; i >= 0; i--)
+            {
+                highest[i] = Math.Min(highest[i], maxHigh);
+                if (highest[i] > inputs[i])
+                    result += highest[i] - inputs[i];
+
+                maxHigh = Math.Max(inputs[i], maxHigh);
+            }
+
+            return result;
         }
 
         public string SolveQuestion(string input)

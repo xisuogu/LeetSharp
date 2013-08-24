@@ -19,8 +19,53 @@ namespace LeetSharp
     {
         public ListNode<int> SwapPairs(ListNode<int> head)
         {
-            return null;
+            if (head == null || head.Next == null)
+                return head;
+
+            ListNode<int> newHead = head.Next;
+            ListNode<int> tail = new ListNode<int>(0);
+
+            while (head != null && head.Next != null)
+            {
+                ListNode<int> temp = head.Next.Next;
+                tail.Next = head.Next;
+                tail.Next.Next = head;
+                tail = head;
+                tail.Next = null;
+                head = temp;
+            }
+
+            tail.Next = head;
+            return newHead;
         }
+
+        /*
+         * 
+        public ListNode<int> SwapPairs(ListNode<int> head)
+        {
+            if (head == null)
+                return null;
+
+            return SwapPairsRecursive(head);
+        }
+
+        public ListNode<int> SwapPairsRecursive(ListNode<int> head)
+        {
+            ListNode<int> ret = null;
+            if (head.Next != null && head.Next.Next != null)
+                ret = SwapPairsRecursive(head.Next.Next);
+
+            ListNode<int> newHead = head;
+            if (head.Next != null)
+            {
+                newHead = head.Next;
+                newHead.Next = head;
+                head.Next = ret;
+            }
+
+            return newHead;
+        }
+         */
 
         public string SolveQuestion(string input)
         {

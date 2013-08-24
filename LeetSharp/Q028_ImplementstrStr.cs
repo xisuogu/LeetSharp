@@ -16,6 +16,24 @@ namespace LeetSharp
     {
         public string StrStr(string haystack, string needle)
         {
+            if (needle == string.Empty)
+                return haystack;
+
+            for (int i = 0; i < haystack.Length - needle.Length + 1; i++)
+            {
+                int hStart = i, nStart = 0;
+                while (hStart < haystack.Length && nStart < needle.Length)
+                {
+                    if (needle[nStart] != haystack[hStart])
+                    {
+                        break;
+                    }
+                    hStart++;
+                    nStart++;
+                }
+                if (nStart == needle.Length)
+                    return haystack.Substring(hStart - needle.Length);
+            }
             return null;
         }
 

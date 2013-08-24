@@ -32,7 +32,55 @@ namespace LeetSharp
     {
         public string[][] SolveNQueens(int n)
         {
-            return null;
+            List<int[]> result = new List<int[]>();
+            int[] data = new int[n];
+            SolveNQueensRecursive(0, data, result);
+            return ConvertToStringArrayArray(result, n);
+        }
+
+        private string[][] ConvertToStringArrayArray(List<int[]> result, int n)
+        {
+            List<string[]> strArrList = new List<string[]>();
+            foreach (int[] res in result)
+            {
+                string[] strArr = new string[n];
+                for (int i = 0; i < n; i++)
+                {
+                    int pos = res[i];
+                    strArr[i] = new string('.', pos) + 'Q' + new string('.', n - 1 - pos);
+                }
+                strArrList.Add(strArr);
+            }
+
+            return strArrList.ToArray();
+        }
+
+        private void SolveNQueensRecursive(int row, int[] data, List<int[]> result)
+        {
+            if (row == data.Length)
+            {
+                result.Add(data.ToArray());
+                return;
+            }
+
+            for (int col = 0; col < data.Length; col++)
+            {
+                if (IsValid(data, row, col))
+                {
+                    data[row] = col;
+                    SolveNQueensRecursive(row + 1, data, result);
+                }
+            }
+        }
+
+        private bool IsValid(int[] data, int row, int col)
+        {
+            for (int i = 0; i < row; i++)
+            {
+                if (data[i] == col || Math.Abs(data[i] - col) == row - i)
+                    return false;
+            }
+            return true; 
         }
 
         public string SolveQuestion(string input)

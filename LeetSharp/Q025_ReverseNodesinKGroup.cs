@@ -23,7 +23,40 @@ namespace LeetSharp
     {
         public ListNode<int> ReverseKGroup(ListNode<int> head, int k)
         {
-            return null;
+            if (head == null)
+                return null;
+
+            ListNode<int> oldlast = new ListNode<int>(-1);
+            ListNode<int> newHead = oldlast;
+            while (head != null)
+            {
+                ListNode<int> newList = new ListNode<int>(-1);
+
+                ListNode<int> newLast = newList;
+                ListNode<int> oldHead = head;
+                
+                int i = 0;
+                for (; head != null && i < k; i++)
+                {
+                    newList.Val = head.Val;
+                    ListNode<int> temp = new ListNode<int>(-1);
+                    temp.Next = newList;
+                    newList = temp;
+                    head = head.Next;
+                }
+
+                if (i == k)
+                {
+                    oldlast.Next = newList.Next;
+                    oldlast = newLast;
+                }
+                else
+                {
+                    oldlast.Next = oldHead;
+                }
+            }
+
+            return newHead.Next;
         }
 
         public string SolveQuestion(string input)

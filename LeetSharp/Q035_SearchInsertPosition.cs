@@ -23,6 +23,29 @@ namespace LeetSharp
     {
         public int SearchInsert(int[] input, int target)
         {
+            int start = 0, end = input.Length - 1;
+            while (start <= end)
+            {
+                if (input[start] > target)
+                    return start;
+                if (input[end] < target)
+                    return end + 1;
+
+                int middle = (start + end) / 2;
+                if (input[middle] == target)
+                {
+                    return middle;
+                }
+                else if (input[middle] < target)
+                {
+                    start = middle + 1;
+                 }
+                else
+                {
+                    end = middle - 1;
+                }
+            }
+
             return -1;
         }
 

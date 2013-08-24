@@ -19,7 +19,19 @@ namespace LeetSharp
     {
         public int[][] Rotate(int[][] matrix)
         {
-            return null;
+            for (int layer = 0; layer < matrix.Length / 2; layer++)
+            {
+                for (int i = layer; i < matrix.Length - 1 - layer; i++)
+                {
+                    int temp = matrix[layer][i];
+                    matrix[layer][i] = matrix[matrix.Length - 1 - i][layer];
+                    matrix[matrix.Length - 1 - i][layer] = matrix[matrix.Length - 1 - layer][matrix.Length - 1 - i];
+                    matrix[matrix.Length - 1 - layer][matrix.Length - 1 - i] = matrix[i][matrix.Length - 1 - layer];
+                    matrix[i][matrix.Length - 1 - layer] = temp;
+
+                }
+            }
+            return matrix;
         }
 
         public string SolveQuestion(string input)

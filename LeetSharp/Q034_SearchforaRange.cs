@@ -22,7 +22,48 @@ namespace LeetSharp
     {
         public int[] SearchRange(int[] A, int target)
         {
-            return null;
+            int min = int.MaxValue, max = int.MinValue;
+            SearchRange(A, 0, A.Length - 1, target, ref min, ref max);
+
+            if (min == int.MaxValue)
+                min = -1;
+            if (max == int.MinValue)
+                max = -1;
+
+            return new int[] { min, max };
+        }
+
+        private void SearchRange(int[] A, int start, int end, int target, ref int min, ref int max)
+        {
+            if (start >= end)
+            {
+                if (start == end && A[start] == target)
+                    min = max = start;
+                return;
+            }
+
+            int tempMin = int.MaxValue, tempMax = int.MinValue;
+            int middle = (start + end) / 2;
+            if (A[middle] > target)
+            {
+                SearchRange(A, start, middle - 1, target, ref tempMin, ref tempMax);
+            }
+            else if (A[middle] < target)
+            {
+                SearchRange(A, middle + 1, end, target, ref tempMin, ref tempMax);
+            }
+            else
+            {
+                int ignorableValue = -1;
+                SearchRange(A, start, middle - 1, target, ref tempMin, ref ignorableValue);
+                SearchRange(A, middle + 1, end, target, ref ignorableValue, ref tempMax);
+
+                max = Math.Max(max, middle);
+                min = Math.Min(min, middle);
+            }
+
+            min = Math.Min(tempMin, min);
+            max = Math.Max(tempMax, max);
         }
 
         public string SolveQuestion(string input)

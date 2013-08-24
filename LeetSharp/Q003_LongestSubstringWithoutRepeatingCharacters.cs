@@ -16,7 +16,28 @@ namespace LeetSharp
     {
         int LengthOfLongestSubstring(string s)
         {
-            return -1;
+            int maxLength = 0;
+
+            int start = 0, end = 0;
+            HashSet<char> set = new HashSet<char>();
+
+            while (end < s.Length)
+            {
+                if (!set.Add(s[end]))
+                {
+                    while (start <= end && s[start] != s[end])
+                    {
+                        set.Remove(s[start]);
+                        start++;
+                    }
+                    start++;
+                }
+                
+                end++;
+                maxLength = Math.Max(maxLength, end - start);
+            }
+
+            return maxLength;
         }
 
         public string SolveQuestion(string input)

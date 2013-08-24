@@ -14,9 +14,67 @@ namespace LeetSharp
     [TestClass]
     public class Q036_ValidSudoku
     {
+        private HashSet<int> Init(int length)
+        {
+            HashSet<int> set = new HashSet<int>();
+            for (int i = 0; i < length; i++)
+                set.Add(i + 1);
+            return set;
+        }
+
+        private bool IsValidSudoku_Straight(int[,] board, bool isRow)
+        {
+            for (int i = 0; i < board.GetLength(0); i++)
+            {
+                HashSet<int> set = Init(board.GetLength(0));
+                for (int j = 0; j < board.GetLength(0); j++)
+                {
+                    int value = isRow ? board[i, j] : board[j, i];
+                    if (value != 0 && !set.Remove(value))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        private bool IsValidSudoku_Diagonal(int[,] board)
+        {
+            for (int i = 0; i < board.GetLength(0); i++)
+            {
+                int rStart = (i / 3) * 3;
+                int cStart = (i % 3) * 3;
+
+                HashSet<int> set = Init(board.GetLength(0));
+                for (int r = rStart; r < rStart + 3; r++)
+                {
+                    for (int c = cStart; c < cStart + 3; c++)
+                    {
+                        int value = board[r, c];
+                        if (value != 0 && !set.Remove(value))
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+
+            return true;
+        }
+
         public bool IsValidSudoku(int[,] board)
         {
-            return false;
+            if (!IsValidSudoku_Straight(board, true))
+                return false;
+
+            if (!IsValidSudoku_Straight(board, false))
+                return false;
+
+            if (!IsValidSudoku_Diagonal(board))
+                return false;
+
+            return true;
         }
 
         public static int[,] ParseSudokuData(string s)

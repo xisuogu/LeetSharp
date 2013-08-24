@@ -14,7 +14,31 @@ namespace LeetSharp
     {
         public int Divide(int dividend, int divisor)
         {
-            return -1;
+            long a = (long)dividend;
+            long b = (long)divisor;
+
+            bool neg = Math.Sign(a) != Math.Sign(b);
+            a = Math.Abs(a);
+            b = Math.Abs(b);
+
+            if (b == 1)
+                return neg ? 0 - (int)a : (int)a;
+
+            int shift = 0;
+            while (b << shift < a)
+            {
+                shift++;
+            }
+
+            long result = 1L << shift;
+            long sum = b * result;
+            while (sum > a)
+            {
+                sum -= b;
+                result--;
+            }
+
+            return neg ? 0 - (int)result : (int)result;
         }
 
         public string SolveQuestion(string input)

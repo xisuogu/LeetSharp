@@ -18,7 +18,9 @@ namespace LeetSharp
     {
         public int[][] Merge(int[][] intervals)
         {
-            return null;
+            List<int[]> orderedList = intervals.OrderBy(x => x[0]).ToList();
+
+            return new int[][] {};
         }
 
         public string SolveQuestion(string input)

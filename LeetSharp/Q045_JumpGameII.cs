@@ -23,7 +23,32 @@ namespace LeetSharp
     {
         public int Jump(int[] input)
         {
-            return -1;
+            if (input.Length == 1)
+                return 0;
+
+            int minStep = 0;
+            int currentLow = 0, currentHigh = 0;
+
+            while (currentLow <= currentHigh)
+            {
+                minStep++;
+                int nextHigh = currentHigh;
+
+                for (int i = currentLow; i <= currentHigh; i++)
+                {
+                    if (i + input[i] >= input.Length - 1)
+                    {
+                        return minStep;
+                    }
+
+                    nextHigh = Math.Max(nextHigh, i + input[i]);
+                }
+
+                currentLow = currentHigh + 1;
+                currentHigh = nextHigh;
+            }
+
+            return 0;
         }
 
         public string SolveQuestion(string input)

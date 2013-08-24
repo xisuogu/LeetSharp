@@ -21,9 +21,36 @@ namespace LeetSharp
     [TestClass]
     public class Q038_CountandSay
     {
+        public string CountAndSay_Recursive(string n)
+        {
+            string s = string.Empty;
+            int currentNum = n[0] - '0', currentCnt = 0;
+            foreach (char c in n)
+            {
+                int temp = c - '0';
+                if (currentNum != temp)
+                {
+                    s += currentCnt.ToString() + currentNum.ToString();
+                    currentNum = temp;
+                    currentCnt = 1;
+                }
+                else
+                {
+                    currentCnt++;
+                }
+            }
+            s += currentCnt.ToString() + currentNum.ToString();
+            return s;
+        }
+
         public string CountAndSay(int n)
         {
-            return null;
+            string current = "1";
+            for (int i = 1; i < n; i++)
+            {
+                current = CountAndSay_Recursive(current);
+            }
+            return current;
         }
 
         public string SolveQuestion(string input)

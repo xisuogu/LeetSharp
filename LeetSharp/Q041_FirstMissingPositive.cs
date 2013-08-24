@@ -20,7 +20,26 @@ namespace LeetSharp
     {
         public int FirstMissingPositive(int[] A)
         {
-            return -1;
+            for (int i = 0; i < A.Length; i++)
+            {
+                if (A[i] <= 0)
+                    A[i] = int.MaxValue;
+            }
+
+            for (int i = 0; i < A.Length; i++)
+            {
+                int index = Math.Abs(A[i]);
+                if (index <= A.Length)
+                    A[index - 1] = -1 * Math.Abs(A[index - 1]);
+            }
+
+            for (int i = 0; i < A.Length; i++)
+            {
+                if (A[i] >= 0)
+                    return i + 1;
+            }
+
+            return A.Length + 1;
         }
 
         public string SolveQuestion(string input)

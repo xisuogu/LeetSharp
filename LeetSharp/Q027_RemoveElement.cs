@@ -16,7 +16,15 @@ namespace LeetSharp
     {
         int[] RemoveElement(int[] a, int toRemove)
         {
-            return null;
+            int read = 0, write = 0;
+            for (;  read < a.Length; read++)
+            {
+                if (a[read] != toRemove)
+                {
+                    a[write++] = a[read];
+                }
+            }
+            return a.Take(write).ToArray();
         }
 
         public string SolveQuestion(string input)

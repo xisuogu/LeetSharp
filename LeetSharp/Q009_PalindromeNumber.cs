@@ -14,7 +14,31 @@ namespace LeetSharp
     {
         public bool IsPalindrome(int x)
         {
-            return false;
+            if (x < 0)
+            {
+                return false;
+            }
+
+            int numCnt = 1;
+            while (Math.Pow(10, numCnt) < x)
+            {
+                numCnt++;
+            }
+
+            while (x > 9)
+            {
+                if (x % 10 != x / (int)Math.Pow(10, numCnt - 1))
+                {
+                    return false;
+                }
+
+                x = x % (int)Math.Pow(10, numCnt - 1);
+                x = x / 10;
+
+                numCnt -= 2;
+
+            }
+            return true;
         }
 
         public string SolveQuestion(string input)

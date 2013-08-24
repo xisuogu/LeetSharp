@@ -17,7 +17,17 @@ namespace LeetSharp
     {
         public int ReverseInterger(int x)
         {
-            return -1;
+            int result = 0;
+            int flag = x < 0 ? -1 : 1;
+
+            x = Math.Abs(x);
+            while (x > 0)
+            {
+                result = x % 10 + result * 10;
+                x = x / 10;
+            }
+
+            return flag * result;
         }
 
         public string SolveQuestion(string input)

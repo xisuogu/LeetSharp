@@ -19,7 +19,23 @@ namespace LeetSharp
     {
         public int MaxArea(int[] height)
         {
-            return -1;
+            int maxArea = 0;
+            int i = 0, j = height.Length - 1;
+            while (i < j)
+            {
+                maxArea = Math.Max(maxArea, Math.Min(height[i], height[j]) * (j - i));
+
+                if (height[i] <= height[j])
+                {
+                    i++;
+                }
+                else
+                {
+                    j--;
+                }
+            }
+
+            return maxArea;
         }
 
         public string SolveQuestion(string input)

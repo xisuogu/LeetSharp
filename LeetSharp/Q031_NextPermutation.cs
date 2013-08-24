@@ -21,9 +21,40 @@ namespace LeetSharp
     [TestClass]
     public class Q031_NextPermutation
     {
+ 
         public int[] NextPermutation(int[] num)
         {
-            return null;
+            int i = num.Length - 2;
+            for (; i >= 0; i--)
+            {
+                if (num[i] < num[i + 1])
+                {
+                    int min = int.MaxValue, minPos = 0;
+                    for (int j = num.Length - 1; j > i; j--)
+                    {
+                        if (num[j] > num[i] && num[j] < min)
+                        {
+                            min = num[j];
+                            minPos = j;
+                        }
+                    }
+                    int temp = num[i];
+                    num[i] = min;
+                    num[minPos] = temp;
+
+                    break;
+                }
+            }
+
+            int start = i + 1, end = num.Length - 1;
+            while (start < end)
+            {
+                int temp = num[start];
+                num[start++] = num[end];
+                num[end--] = temp;
+            }
+
+            return num;
         }
 
         public string SolveQuestion(string input)

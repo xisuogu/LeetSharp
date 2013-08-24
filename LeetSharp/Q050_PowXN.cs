@@ -14,7 +14,29 @@ namespace LeetSharp
     {
         public double Pow(double x, int n)
         {
-            return -1f;
+            double result = 1f;
+            bool negative = n < 0;
+            n = negative ? 0 - n : n;
+
+            result = PowRecursive(x, n);
+
+            return negative ? 1f / result : result;
+        }
+
+        public double PowRecursive(double x, int n)
+        {
+            if (n == 0)
+                return 1f;
+            
+            if (n == 1)
+                return x;
+
+            double result = PowRecursive(x, n / 2);
+            result *= result;
+            if (n % 2 == 1)
+                result *= x;
+
+            return result;
         }
 
         public string SolveQuestion(string input)

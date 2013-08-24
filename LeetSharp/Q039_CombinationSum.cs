@@ -27,7 +27,33 @@ namespace LeetSharp
     {
         public int[][] CombinationSum(int[] candidates, int target)
         {
-            return null;
+            Array.Sort(candidates);
+
+            List<int> data = new List<int>();
+            List<int[]> results = new List<int[]>();
+            CombinationSum(candidates, target, data, results, 0);
+            return results.ToArray();
+        }
+
+        private void CombinationSum(int[] candidates, int target, List<int> data, List<int[]> results, int startIndex)
+        {
+            if (target < 0)
+            {
+                return;
+            }
+
+            if (target == 0)
+            {
+                results.Add(data.ToArray());
+                return;
+            }
+
+            for (int i = startIndex; i < candidates.Length; i++)
+            {
+                data.Add(candidates[i]);
+                CombinationSum(candidates, target - candidates[i], data, results, i);
+                data.Remove(candidates[i]);
+            }
         }
 
         public string SolveQuestion(string input)
