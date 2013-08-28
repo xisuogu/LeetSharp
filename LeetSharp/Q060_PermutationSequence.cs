@@ -27,7 +27,74 @@ namespace LeetSharp
     {
         public string GetPermutation(int n, int k)
         {
-            return null;
+            List<int> num = Enumerable.Range(1, n).ToList();
+
+            string result = string.Empty;
+            for (int i = 0; i < n; i++)
+            {
+                int countOfRightPerm = Factorial(n - 1 - i);
+                int index = (k - 1) / countOfRightPerm;
+                result += num[index];
+                num.RemoveAt(index);
+                k -= countOfRightPerm * index;
+            }
+            return result;
+        }
+
+        private int Factorial(int n)
+        {
+            int res = 1;
+            while (n > 0)
+            {
+                res *= n--;
+            }
+            return res;
+        }
+
+        public string GetPermutation2(int n, int k)
+        {
+            int[] num = Enumerable.Range(1, n).ToArray();
+
+            while (--k > 0)
+            {
+                num = NextPermutation(num);
+            }
+            return string.Join("", num);
+        }
+
+        private int[] NextPermutation(int[] num)
+        {
+            int i = num.Length - 2;
+            for (; i >= 0; i--)
+            {
+                if (num[i] < num[i + 1])
+                {
+                    int min = int.MaxValue, minPos = 0;
+                    for (int j = num.Length - 1; j > i; j--)
+                    {
+                        if (num[j] > num[i] && num[j] < min)
+                        {
+                            min = num[j];
+                            minPos = j;
+                        }
+                    }
+                    int temp = num[i];
+                    num[i] = min;
+                    num[minPos] = temp;
+
+                    break;
+                }
+            }
+
+            int start = i + 1, end = num.Length - 1;
+            while (start < end)
+            {
+                int temp = num[start];
+                num[start++] = num[end];
+                num[end--] = temp;
+            }
+
+            return num;
         }
 
         public string SolveQuestion(string input)

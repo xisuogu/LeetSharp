@@ -19,7 +19,34 @@ namespace LeetSharp
     {
         public int UniquePaths(int m, int n)
         {
-            return -1;
+            int[] temp = new int[n];
+            for (int i = 0; i < m; i++)
+            {
+                temp[0] = 1;
+                for (int j = 1; j < n; j++)
+                {
+                    temp[j] += temp[j - 1];
+                }
+            }
+            return temp[n - 1];
+        }
+
+        public int UniquePaths2(int m, int n)
+        {
+            int[ , ] matrix = new int[m, n];
+            for (int i = 0; i < m; i++)
+                matrix[i, 0] = 1;
+            for (int j = 0; j < n; j++)
+                matrix[0, j] = 1;
+
+            for (int i = 1; i < m; i++)
+            {
+                for (int j = 1; j < n; j++)
+                {
+                    matrix[i, j] = matrix[i - 1, j] + matrix[i, j - 1];
+                }
+            }
+            return matrix[m - 1, n - 1];
         }
 
         public string SolveQuestion(string input)

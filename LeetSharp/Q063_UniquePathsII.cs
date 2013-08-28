@@ -28,7 +28,30 @@ namespace LeetSharp
     {
         public int UniquePathsWithObstacles(int[][] obstacleGrid)
         {
-            return -1;
+            bool hitObstacleInEdge = false;
+            int m = obstacleGrid.Length;
+            int n = obstacleGrid[0].Length;
+            int[] temp = new int[n];
+
+            for (int i = m - 1; i >= 0; i--)
+            {
+                if (obstacleGrid[i][n - 1] == 1)
+                    hitObstacleInEdge = true;
+                temp[n - 1] = hitObstacleInEdge ? 0 : 1;
+
+                for (int j = n - 2; j >= 0; j--)
+                {
+                    if (obstacleGrid[i][j] == 1)
+                    {
+                        temp[j] = 0;
+                    }
+                    else
+                    {
+                        temp[j] += temp[j + 1];
+                    }
+                }
+            }
+            return temp[0];
         }
 
         public string SolveQuestion(string input)

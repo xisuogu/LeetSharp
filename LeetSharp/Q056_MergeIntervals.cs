@@ -18,9 +18,29 @@ namespace LeetSharp
     {
         public int[][] Merge(int[][] intervals)
         {
+            if (intervals.Length == 0)
+                return intervals;
+
+            List<int[]> resultList = new List<int[]>();
             List<int[]> orderedList = intervals.OrderBy(x => x[0]).ToList();
 
-            return new int[][] {};
+            int currentIndex = 0;
+            resultList.Add(orderedList[0]);
+            for (int i = 1; i < orderedList.Count; i++)
+            {
+                int[] interval = orderedList[i];
+                if (interval[0] <= resultList[currentIndex][1])
+                {
+                    resultList[currentIndex][1] = Math.Max(interval[1], resultList[currentIndex][1]);
+                }
+                else
+                {
+                    resultList.Add(interval);
+                    currentIndex++;
+                }
+            }
+
+            return resultList.ToArray();
         }
 
         public string SolveQuestion(string input)
