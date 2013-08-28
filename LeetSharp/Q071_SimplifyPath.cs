@@ -24,7 +24,50 @@ namespace LeetSharp
     {
         public string SimplifyPath(string path)
         {
-            return null;
+            string word = string.Empty;
+            Stack<string> words = new Stack<string>();
+            for (int i = 0; i < path.Length; i++)
+            {
+                if (path[i] == '.')
+                {
+                    if (i < path.Length - 1)
+                    {
+                        if (path[i + 1] == '.')
+                        {
+                            if (words.Count > 0)
+                                words.Pop();
+
+                            i++;
+                        }
+                        else if (path[i + 1] != '/')
+                        {
+                            word += path[i];
+                        }
+                    }
+                }
+                else if (path[i] == '/')
+                {
+                    if (word != string.Empty)
+                    {
+                        words.Push(word);
+                        word = string.Empty;
+                    }
+                }
+                else
+                {
+                    word += path[i];
+                }
+            }
+
+            if (word != string.Empty)
+                words.Push(word);
+
+            string result = string.Empty;
+            while (words.Count > 0)
+            {
+                result = "/" + words.Pop() + result;
+            }
+            return result == string.Empty ? "/" : result;
         }
 
         public string SolveQuestion(string input)
