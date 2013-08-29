@@ -18,9 +18,25 @@ namespace LeetSharp
     [TestClass]
     public class Q080_RemoveDuplicatesfromSortedArrayII
     {
-        public int[] RemoveDuplicates(int[] input)
+        public int[] RemoveDuplicates(int[] a)
         {
-            return null;
+            if (a == null || a.Length == 0)
+                return new int[0];
+
+            int dupCount = 1;
+            int flag = a[0];
+            int read = 1, write = 1;
+            for (; read < a.Length; read++)
+            {
+                if (a[read] != flag || dupCount < 2)
+                {
+                    dupCount = (a[read] == flag) ? dupCount + 1 : 1;
+                    flag = a[read];
+                    a[write++] = flag;                    
+                }
+            }
+
+            return a.Take(write).ToArray();
         }
 
         public string SolveQuestion(string input)

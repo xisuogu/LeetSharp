@@ -16,7 +16,47 @@ namespace LeetSharp
     {
         public int Sqrt(int x)
         {
-            return -1;
+            if (x == 0)
+            {
+                return 0;
+            }
+            if (x < 4)
+            {
+                return 1;
+            }
+            /*
+            long low = x >> 1;
+            long high = low;
+            while (low * low > x)
+            {
+                high = low;
+                low = low >> 1;
+            }
+            if (low * low == x)
+            {
+                return (int)low;
+            }
+             */
+
+            long low = 1, high = x - 1;
+            while (high - low > 1)
+            {
+                long mid = (high + low) / 2;
+                if (mid * mid > x)
+                {
+                    high = mid;
+                }
+                else if (mid * mid == x)
+                {
+                    return (int)mid;
+                }
+                else
+                {
+                    low = mid;
+                }
+            }
+            return (int)low;
+
         }
 
         public string SolveQuestion(string input)
