@@ -24,7 +24,46 @@ namespace LeetSharp
     {
         public bool IsNumber(string s)
         {
-            return false;
+            s = s.Trim();
+
+            string[] tokens = s.Split('e');
+            if (tokens.Length > 2)
+                return false;
+
+            bool hasDot = false;
+            return tokens.All(token =>
+            {
+                if (token == string.Empty)
+                    return false;
+
+                int start = 0;
+                if (token[0] == '+' || token[0] == '-')
+                {
+                    start = 1;
+                }
+
+                bool hasDigit = false;
+                for (int i = start; i < token.Length; i++)
+                {
+                    if (!char.IsNumber(token[i]))
+                    {
+                        if (token[i] == '.' && !hasDot)
+                        {
+                            hasDot = true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        hasDigit = true;
+                    }
+                }
+                hasDot = true;
+                return hasDigit;
+            });
         }
 
         public string SolveQuestion(string input)

@@ -40,7 +40,51 @@ namespace LeetSharp
     {
         public string[] FullJustify(string[] words, int length)
         {
-            return null;
+            List<string> results = new List<string>();
+
+            int currentLength = 0, start = 0;
+            for (int i = 0; i < words.Length; i++)
+            {                
+                if (currentLength + words[i].Length + i - start > length)
+                {
+                    Print(words, start, i - 1, currentLength, length, results);
+                    start = i;
+                    currentLength = words[i].Length;
+                }
+                else
+                {
+                    currentLength += words[i].Length;
+                }
+            }
+
+            if (currentLength > 0)
+            {
+                Print(words, start, words.Length - 1, currentLength, length, results);
+            }
+
+            if (results.Count == 0)
+                results.Add(new string(' ', length));
+            return results.ToArray();
+        }
+
+        private void Print(string[] words, int start, int end, 
+            int currentLength, int inputLength, List<string> results)
+        {
+            int spaceTotalLength = inputLength - currentLength;
+
+            string result = string.Empty;
+            for (int i = start; i < end; i++)
+            {
+                int spaceIntervalCount = (end != words.Length - 1) ? 
+                    (int)Math.Ceiling((float)spaceTotalLength / (end - i)) : 1;
+                result += words[i] + new string(' ', spaceIntervalCount);
+                spaceTotalLength -= spaceIntervalCount;
+            }
+            if (end >= 0)
+            {
+                result += words[end] + new string(' ', spaceTotalLength);
+            }
+            results.Add(result);
         }
 
         public string SolveQuestion(string input)
