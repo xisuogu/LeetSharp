@@ -24,9 +24,32 @@ namespace LeetSharp
     [TestClass]
     public class Q094_BinaryTreeInorderTraversal
     {
+        private void PushLeftNodesIntoStack(BinaryTree node, Stack<BinaryTree> stack)
+        {
+            if (node != null)
+            {
+                stack.Push(node);
+                while (node.Left != null)
+                {
+                    stack.Push(node.Left);
+                    node = node.Left;
+                }
+            }
+        }
+
         public int[] InorderTraversal(BinaryTree root)
         {
-            return null;
+            Stack<BinaryTree> stack = new Stack<BinaryTree>();
+            PushLeftNodesIntoStack(root, stack);
+
+            List<int> result = new List<int>();
+            while (stack.Count != 0)
+            {
+                var item = stack.Pop();
+                result.Add(item.Value);
+                PushLeftNodesIntoStack(item.Right, stack);
+            }
+            return result.ToArray();
         }
 
         public string SolveQuestion(string input)
