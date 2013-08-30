@@ -22,9 +22,53 @@ namespace LeetSharp
     [TestClass]
     public class Q076_MinimumWindowSubstring
     {
+        // http://leetcode.com/2010/11/finding-minimum-window-in-s-which.html
+
         public string MinWindow(string src, string target)
         {
-            return null;
+            if (src.Length < target.Length)
+                return "";
+
+            Dictionary<char, int> mapping = new Dictionary<char, int>();
+            foreach (char c in target)
+                mapping[c] = mapping.ContainsKey(c) ? mapping[c] + 1 : 1;
+
+            int left = 0, right = 0;
+            int answerLeft = 0, answerLength = int.MaxValue;
+            while (right < src.Length)
+            {
+                if (mapping.ContainsKey(src[right]))
+                {
+                    mapping[src[right]]--;
+                    if (mapping.All(s => s.Value <= 0))
+                    {
+                        while (left <= right)
+                        {
+                            if (mapping.ContainsKey(src[left]))
+                            {
+                                mapping[src[left]]++;
+                                if (mapping[src[left]] == 1) // left <-> right can be a candidate answer
+                                {
+                                    if (right - left + 1 < answerLength)
+                                    {
+                                        answerLeft = left;
+                                        answerLength = right - left + 1;
+                                    }
+                                    left++; // make it invalid again 
+                                    break;
+                                }
+                            }
+                            left++;
+                        }
+                    }
+                }
+                right++;
+            }
+
+            if (answerLength == int.MaxValue)
+                return "";
+
+            return src.Substring(answerLeft, answerLength);
         }
 
         public string SolveQuestion(string input)

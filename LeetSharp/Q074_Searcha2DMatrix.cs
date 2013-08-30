@@ -26,6 +26,57 @@ namespace LeetSharp
     {
         public bool SearchMatrix(int[][] matrix, int target)
         {
+            int width = matrix[0].Length;
+            int height = matrix.Length;
+
+            return SearchMatrixRec(matrix, target, 0, height - 1, 0, width - 1);
+        }
+
+        private bool SearchMatrixRec(int[][] matrix, int target, int top, int bottom, int left, int right)
+        {
+            if (top > bottom || left > right)
+                return false;
+
+            int midRow = (top + bottom) / 2;
+            int midCol = (left + right) / 2;
+            int temp = matrix[midRow][midCol];
+
+            if (temp == target)
+            {
+                return true;
+            }
+            else if (temp < target) // discard the left top part
+            {
+                return SearchMatrixRec(matrix, target, midRow + 1, bottom, left, right)
+                    || SearchMatrixRec(matrix, target, top, midRow, midCol + 1, right);
+            }
+            else // discard right bottom part
+            {
+                return SearchMatrixRec(matrix, target, top, midRow - 1, left, right)
+                    || SearchMatrixRec(matrix, target, midRow, bottom, left, midCol - 1);
+            }
+        }
+
+        public bool SearchMatrix2(int[][] matrix, int target)
+        {
+            int i = matrix.Length - 1, j = 0;
+
+            while (i >= 0 && j < matrix[0].Length)
+            {
+                if (matrix[i][j] == target)
+                {
+                    return true; 
+                }
+                else if (matrix[i][j] < target)
+                {
+                    j++;
+                }
+                else
+                {
+                    i--;
+                }
+            }
+
             return false;
         }
 
