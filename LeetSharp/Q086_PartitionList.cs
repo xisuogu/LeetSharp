@@ -21,7 +21,32 @@ namespace LeetSharp
     {
         public ListNode<int> Partition(ListNode<int> head, int x)
         {
-            return null;
+            if (head == null)
+                return null;
+
+            ListNode<int> first = new ListNode<int>(-1);
+            ListNode<int> second = new ListNode<int>(-1);
+            ListNode<int> originalFirst = first;
+            ListNode<int> originalSecond = second;
+
+            while (head != null)
+            {
+                if (head.Val < x)
+                {
+                    first.Next = head;
+                    first = first.Next;
+                }
+                else
+                {
+                    second.Next = head;
+                    second = second.Next;
+                }
+                head = head.Next;
+            }
+            second.Next = null;
+            first.Next = originalSecond.Next;
+
+            return originalFirst.Next;
         }
 
         public string SolveQuestion(string input)
