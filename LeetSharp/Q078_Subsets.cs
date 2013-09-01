@@ -31,7 +31,30 @@ namespace LeetSharp
     {
         public int[][] Subsets(int[] input)
         {
-            return null;
+            Array.Sort(input);
+
+            List<int[]> results = new List<int[]>();
+            int max = 1 << input.Length;
+            for (int i = 0; i < max; i++)
+            {
+                results.Add(ConvertIntValueToCombination(i, input));
+            }
+            return results.ToArray();
+        }
+
+        private int[] ConvertIntValueToCombination(int k, int[] input)
+        {
+            List<int> inputList = new List<int>();
+            int index = 0;
+            for (int i = k; i > 0; i >>= 1)
+            {
+                if ((i & 1) == 1)
+                {
+                    inputList.Add(input[index]);
+                }
+                index++;
+            }
+            return inputList.ToArray();
         }
 
         public string SolveQuestion(string input)
