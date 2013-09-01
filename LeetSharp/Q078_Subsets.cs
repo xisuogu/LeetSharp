@@ -37,12 +37,12 @@ namespace LeetSharp
             int max = 1 << input.Length;
             for (int i = 0; i < max; i++)
             {
-                results.Add(ConvertIntValueToCombination(i, input));
+                results.Add(ConvertIntValueToSubset(i, input));
             }
             return results.ToArray();
         }
 
-        private int[] ConvertIntValueToCombination(int k, int[] input)
+        private int[] ConvertIntValueToSubset(int k, int[] input)
         {
             List<int> inputList = new List<int>();
             int index = 0;

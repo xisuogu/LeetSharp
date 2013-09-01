@@ -25,7 +25,48 @@ namespace LeetSharp
     {
         public int[][] Combinations(int n, int k)
         {
-            return null;
+            int[] input = Enumerable.Range(1, n).ToArray();
+
+            List<int[]> results = new List<int[]>();
+            int max = 1 << input.Length;
+            for (int i = 0; i < max; i++)
+            {
+                ConvertIntValueToCombination(i, input, k, results);
+            }
+            return results.ToArray();
+        }
+
+        private void ConvertIntValueToCombination(int val, int[] input, int k, List<int[]> results)
+        {
+            List<int> inputList = new List<int>();
+            int index = 0;
+            for (int i = val; i > 0; i >>= 1)
+            {
+                if ((i & 1) == 1)
+                {
+                    inputList.Add(input[index]);
+                }
+                index++;
+            }
+            if (inputList.Count == k)
+                results.Add(inputList.ToArray());
+        }
+
+        private bool AreIntArrayArrayEqual(string s1, string s2)
+        {
+            if (s1 == s2)
+            {
+                return true;
+            }
+            if (s1.Length != s2.Length)
+            {
+                return false;
+            }
+            int[][] a1 = s1.ToIntArrayArray();
+            int[][] a2 = s2.ToIntArrayArray();
+            a1 = a1.OrderBy(a => a.Length).ThenBy(a => String.Join("", a)).ToArray();
+            a2 = a2.OrderBy(a => a.Length).ThenBy(a => String.Join("", a)).ToArray();
+            return TestHelper.Serialize(a1) == TestHelper.Serialize(a2);
         }
 
         public string SolveQuestion(string input)
@@ -36,12 +77,12 @@ namespace LeetSharp
         [TestMethod]
         public void Q077_Small()
         {
-            TestHelper.Run(s => SolveQuestion(s));
+            TestHelper.Run(s => SolveQuestion(s), specialAssertAction: AreIntArrayArrayEqual);
         }
         [TestMethod]
         public void Q077_Large()
         {
-            TestHelper.Run(s => SolveQuestion(s));
+            TestHelper.Run(s => SolveQuestion(s), specialAssertAction: AreIntArrayArrayEqual);
         }
     }
 }

@@ -19,9 +19,32 @@ namespace LeetSharp
     [TestClass]
     public class Q072_EditDistance
     {
+        // dynamic programing
+        // dp[i, j] = MinDistance(word1.SubString(0, i), word2.SubString(0, j))
+        // dp[i, j] = Min[ (dp[i-1, j] +1), (dp[i, j-1] +1), (dp[i-1, j-1] + 0 or 1)]
+        // return dp[word1.Length, word2.Length]
         public int MinDistance(string word1, string word2)
         {
-            return -1;
+            int height = word1.Length;
+            int width = word2.Length;
+            int[,] matrix = new int[height + 1, width + 1];
+
+            for (int i = 1; i <= height; i++)
+                matrix[i, 0] = i;
+            for (int j = 1; j <= width; j++)
+                matrix[0, j] = j;
+
+            for (int i = 1; i <= height; i++)
+            {
+                for (int j = 1; j <= width; j++)
+                {
+                    matrix[i, j] = Math.Min(
+                        Math.Min(matrix[i - 1, j] + 1, matrix[i, j - 1] + 1),                         
+                        matrix[i - 1, j - 1] + (word1[i - 1] == word2[j - 1] ? 0 : 1));
+                }
+            }
+
+            return matrix[height, width];
         }
 
         public string SolveQuestion(string input)
