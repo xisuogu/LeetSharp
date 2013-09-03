@@ -31,6 +31,25 @@ namespace LeetSharp
     {
         public int[][] Subsets(int[] input)
         {
+            input = input.OrderBy(x => x).ToArray();
+            List<int[]> results = new List<int[]>();
+            results.Add(new int[] { });
+            for (int i = 0; i < input.Length; i++)
+            {
+                int current = input[i];
+
+                int existingCount = results.Count; // the value need to be recorded first 
+                for (int j = 0; j < existingCount; j++)
+                {
+                    results.Add(results[j].Concat(new int[] { current }).ToArray());
+                }
+            }
+            return results.ToArray();
+        }
+
+
+        public int[][] Subsets2(int[] input)
+        {
             Array.Sort(input);
 
             List<int[]> results = new List<int[]>();

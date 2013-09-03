@@ -29,8 +29,41 @@ namespace LeetSharp
     public class Q079_WordSearch
     {
         public bool Exist(string[] board, string word)
-        {            
+        {
+            bool[,] visited = new bool[board.Length, board[0].Length];
+            for (int i = 0; i < board.Length; i++)
+            {
+                for (int j = 0; j < board[0].Length; j++)
+                {                    
+                    if (Dfs(board, word, visited, i, j, 0))
+                        return true;
+                }
+            }
+
             return false;
+        }
+
+        private bool Dfs(string[] board, string word, bool[,] visited, int i, int j, int level)
+        {
+            if (i < 0 || i >= board.Length || j < 0 || j >= board[0].Length)
+                return false;
+
+            if (visited[i, j] == true || board[i][j] != word[level])
+                return false;
+
+            if (level == word.Length - 1)
+                return true;
+
+            visited[i, j] = true;
+
+            bool ret = Dfs(board, word, visited, i - 1, j, level + 1) 
+                || Dfs(board, word, visited, i, j - 1, level + 1)
+                || Dfs(board, word, visited, i + 1, j, level + 1)
+                || Dfs(board, word, visited, i, j + 1, level + 1);
+
+            visited[i, j] = false;
+
+            return ret;
         }
 
         public string SolveQuestion(string input)

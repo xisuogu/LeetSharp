@@ -26,6 +26,35 @@ namespace LeetSharp
         public int[][] Combinations(int n, int k)
         {
             int[] input = Enumerable.Range(1, n).ToArray();
+            List<int[]> results = new List<int[]>();
+            List<int> temp = new List<int>();
+            CombinationsRec(input, k, results, temp, 0);
+            return results.ToArray();
+        }
+
+        public void CombinationsRec(int[] input, int k, List<int[]> results, List<int> temp, int level)
+        {
+            if (temp.Count == k)
+            {
+                results.Add(temp.ToArray());
+                return;
+            }
+
+            if (k - temp.Count > input.Length - level) // bail out
+            {
+                return;
+            }
+
+            List<int> current = new List<int>(temp);
+            current.Add(input[level]);
+            CombinationsRec(input, k, results, current, level + 1);
+
+            CombinationsRec(input, k, results, temp, level + 1);
+        }
+
+        public int[][] Combinations2(int n, int k)
+        {
+            int[] input = Enumerable.Range(1, n).ToArray();
 
             List<int[]> results = new List<int[]>();
             int max = 1 << input.Length;
@@ -52,23 +81,6 @@ namespace LeetSharp
                 results.Add(inputList.ToArray());
         }
 
-        private bool AreIntArrayArrayEqual(string s1, string s2)
-        {
-            if (s1 == s2)
-            {
-                return true;
-            }
-            if (s1.Length != s2.Length)
-            {
-                return false;
-            }
-            int[][] a1 = s1.ToIntArrayArray();
-            int[][] a2 = s2.ToIntArrayArray();
-            a1 = a1.OrderBy(a => a.Length).ThenBy(a => String.Join("", a)).ToArray();
-            a2 = a2.OrderBy(a => a.Length).ThenBy(a => String.Join("", a)).ToArray();
-            return TestHelper.Serialize(a1) == TestHelper.Serialize(a2);
-        }
-
         public string SolveQuestion(string input)
         {
             return TestHelper.Serialize(Combinations(input.GetToken(0).ToInt(), input.GetToken(1).ToInt()));
@@ -77,12 +89,12 @@ namespace LeetSharp
         [TestMethod]
         public void Q077_Small()
         {
-            TestHelper.Run(s => SolveQuestion(s), specialAssertAction: AreIntArrayArrayEqual);
+            TestHelper.Run(s => SolveQuestion(s));
         }
         [TestMethod]
         public void Q077_Large()
         {
-            TestHelper.Run(s => SolveQuestion(s), specialAssertAction: AreIntArrayArrayEqual);
+            TestHelper.Run(s => SolveQuestion(s));
         }
     }
 }

@@ -23,7 +23,60 @@ namespace LeetSharp
     {
         public ListNode<int> ReverseBetween(ListNode<int> head, int m, int n)
         {
-            return null;
+            ListNode<int> newHead = new ListNode<int>(-1);
+            newHead.Next = head;
+
+            ListNode<int> preTail = newHead;
+
+            int index = 1;
+            while (index++ < m)
+            {
+                preTail = preTail.Next;
+            }
+
+            var curNode = preTail.Next;
+            for (int i = 0; i < n - m; i++)
+            {
+                var preNext = preTail.Next;
+                var curNext = curNode.Next;
+                curNode.Next = curNext.Next;
+                preTail.Next = curNext;
+                curNext.Next = preNext;
+            }
+            return newHead.Next;
+        }
+
+        public ListNode<int> ReverseBetween2(ListNode<int> head, int m, int n)
+        {
+            ListNode<int> newHead = new ListNode<int>(-1);
+            newHead.Next = head;
+
+            ListNode<int> preTail = newHead;
+
+            int index = 1;
+            while (index < m)
+            {
+                preTail = head;
+                head = head.Next;
+                index++;
+            }
+
+            ListNode<int> reversedHead = new ListNode<int>(-1);
+            ListNode<int> reversedTail = reversedHead;
+            while (index <= n)
+            {
+                reversedHead.Val = head.Val;
+                ListNode<int> temp = new ListNode<int>(-1);
+                temp.Next = reversedHead;
+                reversedHead = temp;
+
+                head = head.Next;
+                index++;
+            }
+            reversedTail.Next = head;
+            preTail.Next = reversedHead.Next;
+
+            return newHead.Next;
         }
 
         public string SolveQuestion(string input)

@@ -21,7 +21,7 @@ namespace LeetSharp
         public int Search(int[] a, int target)
         {
             int start = 0, end = a.Length - 1;
-            while (start <= end)
+            while (start <= end) // important: must be <=
             {
                 int mid = (start + end) / 2;
 
@@ -30,7 +30,7 @@ namespace LeetSharp
                     return mid;
                 }
 
-                if (a[start] <= a[mid])
+                if (a[start] <= a[mid]) // important: must be <=
                 {
                     if (target >= a[start] && target < a[mid])
                         end = mid - 1;

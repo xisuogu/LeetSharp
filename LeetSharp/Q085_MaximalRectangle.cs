@@ -30,9 +30,57 @@ namespace LeetSharp
     {
         public int MaximalRectangle(string[] matrix)
         {
-            return -1;
+            if (matrix.Length == 0 || matrix[0].Length == 0)
+                return 0;
+
+            int max = 0; 
+            int[] height = new int[matrix[0].Length];
+            for (int i = 0; i < matrix.Length; i++)
+            {
+                string current = matrix[i];
+                for (int j = 0; j < height.Length; j++)
+                {
+                    height[j] = current[j] == '0' ? 0 : height[j] + 1;
+                }
+                max = Math.Max(max, LargestRectangleArea(height));
+            }
+            return max;
         }
 
+        private int LargestRectangleArea(int[] height)
+        {
+            int[] answers = new int[height.Length];
+            Stack<int> stack = new Stack<int>();
+
+            for (int i = 0; i < height.Length; i++)
+            {
+                while (stack.Count > 0 && height[stack.Peek()] >= height[i])
+                {
+                    stack.Pop();
+                }
+                int leftEdge = stack.Count > 0 ? stack.Peek() : -1;
+                answers[i] = i - leftEdge - 1;
+                stack.Push(i);
+            }
+
+            int max = 0;
+            stack.Clear();
+            for (int i = height.Length - 1; i >= 0; i--)
+            {
+                while (stack.Count > 0 && height[stack.Peek()] >= height[i])
+                {
+                    stack.Pop();
+                }
+                int rightEdge = stack.Count > 0 ? stack.Peek() : height.Length;
+                answers[i] += rightEdge - i - 1;
+                stack.Push(i);
+
+                int current = height[i] * (answers[i] + 1);
+                max = Math.Max(current, max);
+            }
+
+            return max;
+        }
         public string SolveQuestion(string input)
         {
             return MaximalRectangle(input.ToStringArray()).ToString();

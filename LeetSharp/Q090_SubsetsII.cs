@@ -28,9 +28,27 @@ namespace LeetSharp
     [TestClass]
     public class Q090_SubsetsII
     {
-        public int[][] SubsetsWithDup(int[] num)
+        public int[][] SubsetsWithDup(int[] input)
         {
-            return null;
+            input = input.OrderBy(x => x).ToArray();
+            List<int[]> results = new List<int[]>();
+            results.Add(new int[] { });
+
+            int previousCount = 0; 
+            for (int i = 0; i < input.Length; i++)
+            {
+                int current = input[i];
+                int existingCount = results.Count; // the value need to be recorded first 
+                int j = (i > 0 && current == input[i - 1]) ? previousCount : 0;
+
+                for (; j < existingCount; j++)
+                {
+                    results.Add(results[j].Concat(new int[] { current }).ToArray());
+                }
+
+                previousCount = existingCount;
+            }
+            return results.ToArray();
         }
 
         public string SolveQuestion(string input)

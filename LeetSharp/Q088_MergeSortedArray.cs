@@ -18,7 +18,32 @@ namespace LeetSharp
     {
         public int[] Merge(int[] a, int[] b)
         {
-            return null;
+            int[] answer = new int[a.Length + b.Length];
+            for (int i = 0; i < a.Length; i++)
+            {
+                answer[i] = a[i];
+            }
+
+            int write = answer.Length - 1;
+            int aIndex = a.Length - 1, bIndex = b.Length - 1;
+            while (aIndex >= 0 && bIndex >= 0)
+            {
+                if (answer[aIndex] > b[bIndex])
+                {
+                    answer[write--] = answer[aIndex--];
+                }
+                else
+                {
+                    answer[write--] = b[bIndex--];
+                }
+            }
+
+            while (bIndex >= 0)
+            {
+                answer[write--] = b[bIndex--];
+            }
+
+            return answer;
         }
 
         public string SolveQuestion(string input)

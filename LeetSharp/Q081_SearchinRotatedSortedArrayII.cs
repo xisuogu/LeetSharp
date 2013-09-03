@@ -19,7 +19,40 @@ namespace LeetSharp
     {
         public bool SearchRotated(int[] input, int target)
         {
-            return false;
+            return SearchRotatedRec(input, target, 0, input.Length - 1);
+        }
+
+        private bool SearchRotatedRec(int[] input, int target, int start, int end)
+        {
+            if (start > end)
+                return false;
+
+            int middle = (start + end) / 2;
+            if (input[middle] == target)
+                return true;
+
+            if (input[start] < input[middle])
+            {
+                if (target >= input[start] && target < input[middle])
+                    return SearchRotatedRec(input, target, start, middle - 1);
+                else
+                    return SearchRotatedRec(input, target, middle + 1, end);
+            }
+            else if (input[start] > input[middle])
+            {
+                if (target > input[middle] && target <= input[end])
+                    return SearchRotatedRec(input, target, middle + 1, end);
+                else
+                    return SearchRotatedRec(input, target, start, middle - 1);
+            }
+            else
+            {
+                if (input[start] != input[end])
+                    return SearchRotatedRec(input, target, middle + 1, end);
+                else
+                    return SearchRotatedRec(input, target, start, middle - 1)
+                        || SearchRotatedRec(input, target, middle + 1, end);
+            }
         }
 
         public string SolveQuestion(string input)

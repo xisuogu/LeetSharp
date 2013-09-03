@@ -28,7 +28,18 @@ namespace LeetSharp
     {
         public int[] GrayCode(int n)
         {
-            return null;
+            List<int> list = new List<int>();
+            list.Add(0);            
+
+            for (int i = 0; i < n; i++)
+            {
+                int offset = 1 << i;
+                for (int j = list.Count - 1; j >= 0; j--)
+                {
+                    list.Add(list[j] | offset);
+                }
+            }
+            return list.ToArray();
         }
 
         public string SolveQuestion(string input)
