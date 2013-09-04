@@ -16,7 +16,16 @@ namespace LeetSharp
     {
         public bool IsSameTree(BinaryTree t1, BinaryTree t2)
         {
-            return false;
+            if (t1 == null)
+                return t2 == null;
+
+            if (t2 == null)
+                return t1 == null;
+
+            if (t1.Value != t2.Value)
+                return false;
+
+            return IsSameTree(t1.Left, t2.Left) && IsSameTree(t1.Right, t2.Right);
         }
 
         public string SolveQuestion(string input)

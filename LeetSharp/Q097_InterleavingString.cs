@@ -22,7 +22,37 @@ namespace LeetSharp
     {
         public bool IsInterleave(string s1, string s2, string s3)
         {
-            return false;
+            Dictionary<string, bool> cache = new Dictionary<string, bool>();
+            return IsInterleave(s1, s2, s3, cache);
+        }
+
+        private bool IsInterleave(string s1, string s2, string s3, Dictionary<string, bool> cache)
+        {
+            if (s1.Length + s2.Length != s3.Length)
+                return false;
+
+            if (s1 == string.Empty)
+                return s2 == s3;
+
+            if (s2 == string.Empty)
+                return s1 == s3;
+
+            string key = s1.Length + ":" + s2.Length + ":" + s3.Length;
+            if (cache.ContainsKey(key))
+                return cache[key];
+
+            bool result = false;
+            if (s1[0] == s3[0])
+            {
+                result |= IsInterleave(s1.Substring(1), s2, s3.Substring(1), cache);
+            }
+            if (s2[0] == s3[0])
+            {
+                result |= IsInterleave(s1, s2.Substring(1), s3.Substring(1), cache);
+            }
+
+            cache[key] = result;
+            return result;
         }
 
         public string SolveQuestion(string input)

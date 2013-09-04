@@ -17,7 +17,32 @@ namespace LeetSharp
     {
         public BinaryTree BuildTree(int[] inOrder, int[] postOrder)
         {
-            return null;
+            return BuildTree(inOrder, postOrder, 0, 0, inOrder.Length);
+        }
+
+        public BinaryTree BuildTree(int[] inOrder, int[] postOrder, int inOrderStart, int postOrderStart, int length)
+        {
+            if (length == 0)
+                return null;
+
+            int middle = postOrder[postOrderStart + length - 1]; // notice the index is not "length - 1"
+            BinaryTree tree = new BinaryTree(middle);
+
+            int i = inOrderStart;
+            for (; i < inOrderStart + length; i++) // notice the end condition (inorderStart + length)
+            {
+                if (inOrder[i] == middle)
+                    break;
+            }
+
+            // notice how the leftLength & rightLength get calculated
+            int leftLength = i - inOrderStart;
+            int rightLength = length - leftLength - 1;
+
+            tree.Left = BuildTree(inOrder, postOrder, inOrderStart, postOrderStart, leftLength);
+            tree.Right = BuildTree(inOrder, postOrder, inOrderStart + leftLength + 1, postOrderStart + leftLength, rightLength);
+
+            return tree;
         }
 
         public string SolveQuestion(string input)

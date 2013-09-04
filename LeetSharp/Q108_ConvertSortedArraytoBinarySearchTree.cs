@@ -14,7 +14,20 @@ namespace LeetSharp
     {
         public BinaryTree SortedArrayToBST(int[] num)
         {
-            return null;
+            return SortedArrayToBST(num, 0, num.Length - 1);
+        }
+
+        private BinaryTree SortedArrayToBST(int[] num, int start, int end)
+        {
+            if (start > end) 
+                return null;
+
+            int middle = (start + end + 1) / 2;
+            BinaryTree tree = new BinaryTree(num[middle]);
+
+            tree.Left = SortedArrayToBST(num, start, middle - 1);
+            tree.Right = SortedArrayToBST(num, middle + 1, end);
+            return tree;
         }
 
         public string SolveQuestion(string input)
