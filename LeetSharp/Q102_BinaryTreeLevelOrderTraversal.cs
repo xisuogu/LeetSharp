@@ -30,7 +30,38 @@ namespace LeetSharp
     {
         public int[][] LevelOrder(BinaryTree root)
         {
-            return null;
+            List<int[]> results = new List<int[]>();
+            if (root != null)
+            {
+                Queue<BinaryTree> queue1 = new Queue<BinaryTree>();
+                Queue<BinaryTree> queue2 = new Queue<BinaryTree>();
+
+                queue1.Enqueue(root);
+                while (queue1.Count > 0 || queue2.Count > 0)
+                {
+                    ProcessQueue(results, queue1, queue2);
+                    ProcessQueue(results, queue2, queue1);
+                }
+            }
+
+            return results.ToArray();
+        }
+
+        private void ProcessQueue(List<int[]> results, Queue<BinaryTree> queue1, Queue<BinaryTree> queue2)
+        {
+            List<int> resultInOneLevel = new List<int>();
+            while (queue1.Count > 0)
+            {
+                BinaryTree tree = queue1.Dequeue();
+                resultInOneLevel.Add(tree.Value);
+
+                if (tree.Left != null)
+                    queue2.Enqueue(tree.Left);
+                if (tree.Right != null)
+                    queue2.Enqueue(tree.Right);
+            }
+            if (resultInOneLevel.Count > 0)
+                results.Add(resultInOneLevel.ToArray());
         }
 
         public string SolveQuestion(string input)

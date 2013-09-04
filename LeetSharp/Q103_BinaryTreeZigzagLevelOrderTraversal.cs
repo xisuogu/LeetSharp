@@ -30,8 +30,49 @@ namespace LeetSharp
     public class Q103_BinaryTreeZigzagLevelOrderTraversal
     {
         public int[][] ZigzagLevelOrder(BinaryTree root)
+        {            
+            List<int[]> results = new List<int[]>();
+            if (root != null)
+            {
+                Stack<BinaryTree> stack1 = new Stack<BinaryTree>();
+                Stack<BinaryTree> stack2 = new Stack<BinaryTree>();
+
+                stack1.Push(root);
+                while (stack1.Count > 0 || stack2.Count > 0)
+                {
+                    ProcessQueue(results, stack1, stack2, false);
+                    ProcessQueue(results, stack2, stack1, true);
+                }
+            }
+
+            return results.ToArray();
+        }
+
+        private void ProcessQueue(List<int[]> results, Stack<BinaryTree> stack1, Stack<BinaryTree> stack2, bool reverse)
         {
-            return null;
+            List<int> resultInOneLevel = new List<int>();
+            while (stack1.Count > 0)
+            {
+                BinaryTree tree = stack1.Pop();
+                resultInOneLevel.Add(tree.Value);
+
+                if (!reverse)
+                {
+                    if (tree.Left != null)
+                        stack2.Push(tree.Left);
+                    if (tree.Right != null)
+                        stack2.Push(tree.Right);
+                }
+                else
+                {
+                    if (tree.Right != null)
+                        stack2.Push(tree.Right);
+                    if (tree.Left != null)
+                        stack2.Push(tree.Left);
+                }
+            }
+            if (resultInOneLevel.Count > 0)
+                results.Add(resultInOneLevel.ToArray());
         }
 
         public string SolveQuestion(string input)
