@@ -31,17 +31,28 @@ namespace LeetSharp
 
         public List<BinaryTree> GenerateTree(int[] input, int start, int end)
         {
+            if (start > end)
+            {
+                return new List<BinaryTree> { null };
+            }
+
+            if (start == end)
+            {
+                BinaryTree tree = new BinaryTree(input[start]);
+                return new List<BinaryTree> { tree };
+            }
+
             List<BinaryTree> results = new List<BinaryTree>();
             for (int i = start; i <= end; i++)
             {
                 List<BinaryTree> left = GenerateTree(input, start, i - 1);
                 List<BinaryTree> right = GenerateTree(input, i + 1, end);
-
-                BinaryTree current = new BinaryTree(input[i]);
+                                
                 foreach (var leftTree in left)
                 {
                     foreach (var rightTree in right)
                     {
+                        BinaryTree current = new BinaryTree(input[i]);
                         current.Left = leftTree;
                         current.Right = rightTree;
                         results.Add(current);

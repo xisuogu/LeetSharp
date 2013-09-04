@@ -19,7 +19,48 @@ namespace LeetSharp
     {
         public BinaryTree RecoverTree(BinaryTree root)
         {
-            return null;
+            BinaryTree first = null, second = null;
+            int last = int.MinValue;
+
+            Stack<BinaryTree> stack = new Stack<BinaryTree>();
+            PushLeftNodesIntoStack(root, stack);
+
+            while (stack.Count != 0)
+            {
+                var item = stack.Pop();
+
+                if (item.Value < last)
+                {
+                    second = item;
+                }
+                else if (second == null)
+                {
+                    first = item;
+                }
+
+                last = item.Value;
+
+                PushLeftNodesIntoStack(item.Right, stack);
+            }
+
+            int tempValue = first.Value;
+            first.Value = second.Value;
+            second.Value = tempValue;
+
+            return root;
+        }
+
+        private void PushLeftNodesIntoStack(BinaryTree node, Stack<BinaryTree> stack)
+        {
+            if (node != null)
+            {
+                stack.Push(node);
+                while (node.Left != null)
+                {
+                    stack.Push(node.Left);
+                    node = node.Left;
+                }
+            }
         }
 
         public string SolveQuestion(string input)

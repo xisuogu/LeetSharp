@@ -20,7 +20,34 @@ namespace LeetSharp
     {
         public bool IsValidBST(BinaryTree root)
         {
-            return false;
+            return IsValidBST(root, int.MinValue, int.MaxValue);
+        }
+
+        private bool IsValidBST(BinaryTree root, int min, int max)
+        {
+            if (root == null)
+            {
+                return true;
+            }
+
+            if (root.Value <= min || root.Value >= max)
+            {
+                return false;
+            }
+
+            /*
+            if (root.Left != null && root.Left.Value >= root.Value)
+            {
+                return false;
+            }
+
+            if (root.Right != null && root.Right.Value <= root.Value)
+            {
+                return false;
+            }
+            */
+
+            return IsValidBST(root.Left, min, root.Value) && IsValidBST(root.Right, root.Value, max);
         }
 
         public string SolveQuestion(string input)
