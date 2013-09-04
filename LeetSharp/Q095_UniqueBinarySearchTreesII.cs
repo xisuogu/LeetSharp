@@ -23,7 +23,32 @@ namespace LeetSharp
     {
         public BinaryTree[] GenerateTrees(int n)
         {
-            return null;
+            int[] input = Enumerable.Range(1, n).ToArray();
+            List<BinaryTree> trees = GenerateTree(input, 0, n - 1);
+
+            return trees.ToArray();
+        }
+
+        public List<BinaryTree> GenerateTree(int[] input, int start, int end)
+        {
+            List<BinaryTree> results = new List<BinaryTree>();
+            for (int i = start; i <= end; i++)
+            {
+                List<BinaryTree> left = GenerateTree(input, start, i - 1);
+                List<BinaryTree> right = GenerateTree(input, i + 1, end);
+
+                BinaryTree current = new BinaryTree(input[i]);
+                foreach (var leftTree in left)
+                {
+                    foreach (var rightTree in right)
+                    {
+                        current.Left = leftTree;
+                        current.Right = rightTree;
+                        results.Add(current);
+                    }
+                }
+            }
+            return results;
         }
 
         public string SolveQuestion(string input)
