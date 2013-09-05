@@ -17,7 +17,30 @@ namespace LeetSharp
     {
         public bool IsBalanced(BinaryTree root)
         {
-            return false;
+            int temp;
+            return IsBalanced(root, out temp);
+        }
+
+        private bool IsBalanced(BinaryTree root, out int height)
+        {
+            height = 0;
+
+            if (root == null)
+                return true; 
+
+            int leftHeight = 0;
+            if (!IsBalanced(root.Left, out leftHeight))
+                return false;
+
+            int rightHeight = 0;
+            if (!IsBalanced(root.Right, out rightHeight))
+                return false;
+
+            if (Math.Abs(leftHeight - rightHeight) > 1)
+                return false;
+
+            height = Math.Max(leftHeight, rightHeight) + 1;
+            return true;
         }
 
         public string SolveQuestion(string input)
