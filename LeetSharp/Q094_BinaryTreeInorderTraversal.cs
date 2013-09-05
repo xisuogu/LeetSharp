@@ -37,7 +37,7 @@ namespace LeetSharp
             }
         }
 
-        public int[] InorderTraversal(BinaryTree root)
+        public int[] InorderTraversal2(BinaryTree root)
         {
             Stack<BinaryTree> stack = new Stack<BinaryTree>();
             PushLeftNodesIntoStack(root, stack);
@@ -48,6 +48,29 @@ namespace LeetSharp
                 var item = stack.Pop();
                 result.Add(item.Value);
                 PushLeftNodesIntoStack(item.Right, stack);
+            }
+            return result.ToArray();
+        }
+
+        // Review: How to do preorder and postorder ??? 
+        public int[] InorderTraversal(BinaryTree root)
+        {
+            List<int> result = new List<int>();
+            Stack<BinaryTree> stack = new Stack<BinaryTree>();
+            BinaryTree current = root;
+            while (stack.Count > 0 || current != null)
+            {
+                if (current != null)
+                {
+                    stack.Push(current);
+                    current = current.Left;
+                }
+                else
+                {
+                    current = stack.Pop();
+                    result.Add(current.Value);
+                    current = current.Right;
+                }
             }
             return result.ToArray();
         }
