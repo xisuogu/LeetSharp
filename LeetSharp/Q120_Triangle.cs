@@ -28,7 +28,29 @@ namespace LeetSharp
     {
         public int MinimumTotal(int[][] triangle)
         {
-            return -1;
+            for (int row = triangle.Length - 2; row >= 0; row--)
+            {
+                for (int col = 0; col <= row; col++)
+                {
+                    triangle[row][col] +=
+                        Math.Min(triangle[row + 1][col], triangle[row + 1][col + 1]);
+                }
+            }
+            return triangle[0][0];
+        }
+
+        public int MinimumTotal2(int[][] triangle)
+        {
+            return MinimumTotalRec(triangle, 0, 0);
+        }
+
+        public int MinimumTotalRec(int[][] triangle, int x, int y)
+        {
+            if (x == triangle.Length - 1)
+                return triangle[x][y];
+
+            return triangle[x][y] +
+                Math.Min(MinimumTotalRec(triangle, x + 1, y), MinimumTotalRec(triangle, x + 1, y + 1));
         }
 
         public string SolveQuestion(string input)

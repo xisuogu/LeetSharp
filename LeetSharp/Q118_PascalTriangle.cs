@@ -25,7 +25,21 @@ namespace LeetSharp
     {
         public int[][] Generate(int numRows)
         {
-            return null;
+            List<int[]> results = new List<int[]>();
+
+            for (int i = 0; i < numRows; i++)
+            {
+                int[] currentRow = new int[i + 1];
+                currentRow[0] = 1;
+                for (int j = 1; j < i; j++)
+                {
+                    currentRow[j] = results[i - 1][j - 1] + results[i - 1][j];
+                }
+                currentRow[i] = 1;
+                results.Add(currentRow);
+            }
+
+            return results.ToArray();
         }
 
         public string SolveQuestion(string input)

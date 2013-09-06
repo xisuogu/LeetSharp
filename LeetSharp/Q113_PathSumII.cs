@@ -30,8 +30,34 @@ namespace LeetSharp
     {
         public int[][] PathSum(BinaryTree root, int sum)
         {
-            return null;
+            List<int[]> results = new List<int[]>();
+            List<int> data = new List<int>();
+
+            PathSum(root, ref sum, results, data);
+            return results.ToArray();
         }
+
+        private void PathSum(BinaryTree node, ref int sum, List<int[]> results, List<int> data)
+        {
+            if (node == null)
+            {
+                return;
+            }
+
+            sum -= node.Value;
+            data.Add(node.Value);
+            if (node.Left == null && node.Right == null && sum == 0)
+            {
+                results.Add(data.ToArray());
+            }
+
+            PathSum(node.Left, ref sum, results, data);
+            PathSum(node.Right, ref sum, results, data);
+
+            sum += node.Value;
+            data.RemoveAt(data.Count - 1);
+        }
+
 
         public string SolveQuestion(string input)
         {

@@ -20,7 +20,18 @@ namespace LeetSharp
     {
         public int[] GetRow(int rowIndex)
         {
-            return null;
+            int[] currentRow = new int[rowIndex + 1];
+            for (int i = 0; i <= rowIndex; i++)
+            {
+                currentRow[i] = 1;
+           
+                for (int j = i - 1; j >= 1; j--)
+                {
+                    currentRow[j] = currentRow[j - 1] + currentRow[j];
+                }
+                currentRow[0] = 1;
+            }
+            return currentRow;
         }
 
         public string SolveQuestion(string input)

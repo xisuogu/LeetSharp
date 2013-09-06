@@ -21,9 +21,73 @@ namespace LeetSharp
     [TestClass]
     public class Q115_DistinctSubsequences
     {
+        // This is a difficult problem , hard to understand DP solution 
         public int NumDistinct(string src, string tgt)
         {
-            return -1;
+            int[] dp = new int[tgt.Length + 1];
+            dp[0] = 1;
+            
+            for (int i = 1; i <= src.Length; i++)
+            {
+                for (int j = tgt.Length; j >= 1; j--)
+                {
+                    if (src[i - 1] == tgt[j - 1])
+                    {
+                        dp[j] += dp[j - 1];
+                    }
+                }
+            }
+            return dp[tgt.Length];
+        }
+
+        public int NumDistinct_DP2(string src, string tgt)
+        {
+            int[,] dp = new int[src.Length + 1, tgt.Length + 1];
+
+            for (int j = 0; j <= tgt.Length; j++)
+                dp[0, j] = 0;
+
+            for (int i = 0; i <= src.Length; i++)
+                dp[i, 0] = 1;
+
+            for (int i = 1; i <= src.Length; i++)
+            {
+                for (int j = 1; j <= tgt.Length; j++)
+                {
+                    if (src[i - 1] == tgt[j - 1])
+                    {
+                        dp[i, j] = dp[i - 1, j] + dp[i - 1, j - 1];
+                    }
+                    else
+                    {
+                        dp[i, j] = dp[i - 1, j];
+                    }
+                }
+            }
+            return dp[src.Length, tgt.Length];
+        }
+
+        public int NumDistinct_Rec(string src, string tgt)
+        {
+            if (tgt == string.Empty) // notice, this condition check need to happen first 
+                return 1;
+
+            if (src == string.Empty || src.Length < tgt.Length)
+                return 0;
+
+            if (src[0] == tgt[0])
+            {
+                return NumDistinct_Rec(src.Substring(1), tgt)
+                    + NumDistinct_Rec(src.Substring(1), tgt.Substring(1));
+            }
+            else if (src.Length > tgt.Length)
+            {
+                return NumDistinct_Rec(src.Substring(1), tgt);
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         public string SolveQuestion(string input)
