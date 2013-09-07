@@ -20,7 +20,29 @@ namespace LeetSharp
     {
         public int LongestConsecutive(int[] num)
         {
-            return -1;
+            int max = 0;
+            HashSet<int> hashSet = new HashSet<int>(num);    
+
+            foreach (int val in num)
+            {
+                if (hashSet.Remove(val))
+                {
+                    int tempResult = 1;
+                    int upperVal = val + 1;
+                    while (hashSet.Remove(upperVal++))
+                    {
+                        tempResult++;
+                    }
+                    int lowerVal = val - 1;
+                    while (hashSet.Remove(lowerVal--))
+                    {
+                        tempResult++;
+                    }
+                    max = Math.Max(max, tempResult);
+                }
+            }
+
+            return max;
         }
 
         public string SolveQuestion(string input)

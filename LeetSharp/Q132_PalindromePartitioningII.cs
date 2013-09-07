@@ -19,7 +19,78 @@ namespace LeetSharp
     {
         public int MinCut(string input)
         {
-            return -1;
+            int[] answer = new int[input.Length + 1];
+            for (int i = 0; i <= input.Length; i++)
+            {
+                answer[i] = input.Length - i - 1;
+            }
+
+            bool[,] dp = new bool[input.Length, input.Length];
+            for (int start = input.Length - 1; start >= 0; start--)
+            {
+                for (int end = start; end < input.Length; end++)
+                {
+                    if (input[start] == input[end])
+                    {
+                        if (end - start <= 2 || dp[start + 1, end - 1])
+                        {
+                            dp[start, end] = true;
+                            answer[start] = Math.Min(answer[start], answer[end + 1] + 1);
+                        }
+                    }
+                }
+            }
+            return answer[0];
+        }
+
+
+        public int MinCut2(string input)
+        {
+            var cache = new Dictionary<string, int>();
+            return MinCutRec(input, cache);
+        }
+
+        private int MinCutRec(string input, Dictionary<string, int> cache)
+        {
+            if (cache.ContainsKey(input))
+                return cache[input];
+
+            int minCut = int.MaxValue;
+            for (int i = 1; i <= input.Length; i++)
+            {
+                string firstPart = input.Substring(0, i);
+                if (IsPalindrome(firstPart))
+                {
+                    string secondPart = input.Substring(i);
+
+                    int tempMinCut;
+                    if (secondPart.Length > 0)
+                    {
+                        tempMinCut = MinCutRec(secondPart, cache) + 1;
+                    }
+                    else
+                    {
+                        tempMinCut = 0;
+                    }
+                    minCut = Math.Min(tempMinCut, minCut);
+                }
+            }
+            cache[input] = minCut;
+            return minCut;
+        }
+
+        private bool IsPalindrome(string input)
+        {
+            int start = 0, end = input.Length - 1;
+            while (start < end)
+            {
+                if (input[start] != input[end])
+                    return false;
+
+                start++;
+                end--;
+            }
+            return true;
         }
 
         public string SolveQuestion(string input)

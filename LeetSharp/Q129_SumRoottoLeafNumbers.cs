@@ -28,7 +28,26 @@ namespace LeetSharp
     {
         public int SumNumbers(BinaryTree root)
         {
-            return -1;
+            int sum = 0;
+            SumNumbers(root, 0, ref sum);
+            return sum;
+        }
+
+        private void SumNumbers(BinaryTree root, int current, ref int sum)
+        {
+            if (root == null)
+                return;
+
+            current = current * 10 + root.Value;
+
+            if (root.Left == null && root.Right == null)
+            {
+                sum += current;
+                return;
+            }
+
+            SumNumbers(root.Left, current, ref sum);
+            SumNumbers(root.Right, current, ref sum);
         }
 
         public string SolveQuestion(string input)

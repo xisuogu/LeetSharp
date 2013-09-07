@@ -33,7 +33,48 @@ namespace LeetSharp
     {
         public int LadderLength(string start, string end, string[] dict)
         {
-            return -1;
+            int result = 0;
+
+            HashSet<string> hashSet = new HashSet<string>(dict);
+            HashSet<string> currentStarts = new HashSet<string>() { start }; // change to List will slow down perf
+
+            while (currentStarts.Count > 0)
+            {
+                currentStarts.ToList().ForEach(x => hashSet.Remove(x));
+
+                result++;
+
+                HashSet<string> nextStarts = new HashSet<string>();
+                foreach (string word in currentStarts)
+                {
+                    if (word == end)
+                    {
+                        return result;
+                    }
+                    GetAllValidMoves(word, hashSet, nextStarts);
+                }
+
+                currentStarts = nextStarts;
+            }
+            return 0;
+        }
+
+        private void GetAllValidMoves(string word, HashSet<string> dict, HashSet<string> results)
+        {
+            for (int i = 0; i < word.Length; i++)
+            {
+                char[] wordCharArray = word.ToCharArray();
+                for (char c = 'a'; c <= 'z'; c++)
+                {
+                    if (word[i] != c)
+                    {
+                        wordCharArray[i] = c;
+                        string result = new string(wordCharArray);
+                        if (dict.Contains(result))
+                            results.Add(result);
+                    }
+                }
+            }
         }
 
         public string SolveQuestion(string input)

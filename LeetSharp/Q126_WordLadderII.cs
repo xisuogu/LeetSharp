@@ -35,7 +35,77 @@ namespace LeetSharp
     {
         public string[][] FindLadders(string start, string end, string[] dict)
         {
-            return null;
+            HashSet<string> dictionary = new HashSet<string>(dict);
+            HashSet<string> currentStarts = new HashSet<string>() { start };
+
+            List<string[]> results = new List<string[]>();
+            Dictionary<string, List<string>> backtrackMap = new Dictionary<string, List<string>>();
+
+            while (currentStarts.Count > 0)
+            {
+                currentStarts.ToList().ForEach(x => dictionary.Remove(x));
+                HashSet<string> nextStarts = new HashSet<string>();
+
+                foreach (string word in currentStarts)
+                {
+                    if (word == end)
+                    {
+                        AddPathToResults(backtrackMap, start, end, results);
+                    }
+                    GetAllValidNextWords(word, dictionary, nextStarts, backtrackMap);
+                }
+
+                currentStarts = nextStarts;
+            }
+
+            return results.ToArray();
+        }
+
+        private void AddPathToResults(Dictionary<string, List<string>> backtrackMap, 
+            string start, string end, List<string[]> results)
+        {
+            Queue<List<string>> queue = new Queue<List<string>>();
+            queue.Enqueue(new List<string>() { end });
+            while (queue.Peek().First() != start)
+            {
+                List<string> item = queue.Dequeue();
+
+                foreach (string word in backtrackMap[item.First()])
+                {
+                    queue.Enqueue(new string[] { word }.Concat(item).ToList());
+                }
+            }
+            queue.ToList().ForEach(x => results.Add(x.ToArray()));
+        }
+
+        private void GetAllValidNextWords(string current, HashSet<string> dict, 
+            HashSet<string> nextWordSet, Dictionary<string, List<string>> backtrackMap)
+        {
+            for (int i = 0; i < current.Length; i++)
+            {
+                char[] wordCharArray = current.ToCharArray();
+                for (char c = 'a'; c <= 'z'; c++)
+                {
+                    if (current[i] != c)
+                    {
+                        wordCharArray[i] = c;
+                        string nextWord = new string(wordCharArray);
+                        if (dict.Contains(nextWord))
+                        {
+                            nextWordSet.Add(nextWord);
+
+                            if (backtrackMap.ContainsKey(nextWord))
+                            {
+                                backtrackMap[nextWord].Add(current);
+                            }
+                            else
+                            {
+                                backtrackMap[nextWord] = new List<string>() { current };
+                            }                            
+                        }                        
+                    }
+                }
+            }
         }
 
         private int CompareStringArray(string[] arr1, string[] arr2)

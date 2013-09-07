@@ -24,7 +24,50 @@ namespace LeetSharp
     {
         public string[][] Partition(string input)
         {
-            return null;
+            return PartitionRec(input).ToArray();
+        }
+
+        private List<string[]> PartitionRec(string input)
+        {
+            List<string[]> results = new List<string[]>();
+
+            for (int i = 1; i <= input.Length; i++)
+            {
+                string firstPart = input.Substring(0, i);
+                if (IsPalindrome(firstPart))
+                {
+                    string secondPart = input.Substring(i);
+
+                    if (secondPart.Length > 0)
+                    {
+                        var secondResults = PartitionRec(secondPart);
+
+                        foreach (var secondResult in secondResults)
+                        {
+                            results.Add(new string[] { firstPart }.Concat(secondResult).ToArray());
+                        }
+                    }
+                    else
+                    {
+                        results.Add(new string[] { firstPart });
+                    }
+                }
+            }
+            return results;
+        }
+
+        private bool IsPalindrome(string input)
+        {
+            int start = 0, end = input.Length - 1;
+            while (start < end)
+            {
+                if (input[start] != input[end])
+                    return false;
+
+                start++;
+                end--;
+            }
+            return true;
         }
 
         public string SolveQuestion(string input)
