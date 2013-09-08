@@ -22,21 +22,18 @@ namespace LeetSharp
                 int carry = 0;
                 for (int j = num2.Length - 1; j >= 0; j--)
                 {
-                    int resIndex = num1.Length - 1 - i + num2.Length - 1 - j;
+                    int resIndex = i + j + 1; // num1.Length - 1 - i + num2.Length - 1 - j;
                     int temp = result[resIndex] + (num1[i] - '0') * (num2[j] - '0') + carry;
                     result[resIndex] = temp % 10;
                     carry = temp / 10;
                 }
-                int carryIndex = num1.Length - 1 - i + num2.Length;
                 if (carry > 0)
                 {
-                    int temp = result[carryIndex] + carry;
-                    result[carryIndex] = temp % 10;
-                    carry = temp / 10;
+                    result[i] += carry; // carryIndex : num1.Length - 1 - i + num2.Length;
                 }
             }
 
-            string answer = string.Join("", result.Reverse()).TrimStart('0');
+            string answer = string.Join("", result).TrimStart('0');
             return (answer == string.Empty) ? "0" : answer;
         }
 

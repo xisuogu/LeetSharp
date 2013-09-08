@@ -24,7 +24,23 @@ namespace LeetSharp
     {
         public int MaxPathSum(BinaryTree root)
         {
-            return -1;
+            int max = int.MinValue;
+            MaxPathSum(root, ref max);
+            return max;
+        }
+
+        private int MaxPathSum(BinaryTree root, ref int max)
+        {
+            if (root == null)
+                return 0;
+
+            int left = MaxPathSum(root.Left, ref max);
+            left = Math.Max(0, left);
+            int right = MaxPathSum(root.Right, ref max);
+            right = Math.Max(0, right);
+            
+            max = Math.Max(max, root.Value + left + right);
+            return root.Value + Math.Max(left, right);
         }
 
         public string SolveQuestion(string input)

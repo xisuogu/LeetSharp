@@ -18,7 +18,13 @@ namespace LeetSharp
     {
         public int MaxProfitII(int[] prices)
         {
-            return -1;
+            int maxProfit = 0;
+            for (int i = 1; i < prices.Length; i++)
+            {
+                int profit = prices[i] - prices[i - 1];
+                maxProfit += (profit > 0) ? profit : 0;
+            }
+            return maxProfit;
         }
 
         public string SolveQuestion(string input)

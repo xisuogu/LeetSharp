@@ -19,7 +19,37 @@ namespace LeetSharp
     {
         public int MaxProfitIII(int[] prices)
         {
-            return -1;
+            int[] profit1 = new int[prices.Length];
+            int[] profit2 = new int[prices.Length];
+
+            int maxSum = 0;
+            int currentSum = 0;
+            for (int i = 1; i < prices.Length; i++)
+            {
+                currentSum += (prices[i] - prices[i - 1]);
+                maxSum = Math.Max(maxSum, currentSum);
+                if (currentSum < 0)
+                    currentSum = 0;
+                profit1[i] = maxSum;
+            }
+
+            maxSum = 0;
+            currentSum = 0;
+            for (int i = prices.Length - 2; i >= 0; i--)
+            {
+                currentSum += prices[i + 1] - prices[i];
+                maxSum = Math.Max(maxSum, currentSum);
+                if (currentSum < 0)
+                    currentSum = 0;
+                profit2[i] = maxSum;
+            }
+
+            int maxProfit = 0;
+            for (int i = 0; i < prices.Length; i++)
+            {
+                maxProfit = Math.Max(maxProfit, profit1[i] + profit2[i]);
+            }
+            return maxProfit;
         }
 
         public string SolveQuestion(string input)
