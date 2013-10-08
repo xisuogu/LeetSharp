@@ -46,7 +46,7 @@ namespace LeetSharp
             {
                 result |= IsInterleave(s1.Substring(1), s2, s3.Substring(1), cache);
             }
-            if (s2[0] == s3[0])
+            if (!result && s2[0] == s3[0])
             {
                 result |= IsInterleave(s1, s2.Substring(1), s3.Substring(1), cache);
             }

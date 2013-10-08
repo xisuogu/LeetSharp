@@ -26,34 +26,35 @@ namespace LeetSharp
     {
         public bool SearchMatrix(int[][] matrix, int target)
         {
-            int width = matrix[0].Length;
             int height = matrix.Length;
+            int width = matrix[0].Length;
 
-            return SearchMatrixRec(matrix, target, 0, height - 1, 0, width - 1);
+            return SearchMatrix(matrix, target, 0, width - 1, 0, height - 1);
         }
 
-        private bool SearchMatrixRec(int[][] matrix, int target, int top, int bottom, int left, int right)
+        private bool SearchMatrix(int[][] matrix, int target, int left, int right, int top, int bottom)
         {
-            if (top > bottom || left > right)
+            if (left > right || top > bottom)
                 return false;
 
-            int midRow = (top + bottom) / 2;
-            int midCol = (left + right) / 2;
-            int temp = matrix[midRow][midCol];
+            int middleRow = (top + bottom) / 2;
+            int middleCol = (left + right) / 2;
 
-            if (temp == target)
+            int current = matrix[middleRow][middleCol];
+
+            if (current == target)
             {
                 return true;
             }
-            else if (temp < target) // discard the left top part
+            else if (current < target)
             {
-                return SearchMatrixRec(matrix, target, midRow + 1, bottom, left, right)
-                    || SearchMatrixRec(matrix, target, top, midRow, midCol + 1, right);
+                return SearchMatrix(matrix, target, middleCol + 1, right, top, middleRow)
+                    || SearchMatrix(matrix, target, left, right, middleRow + 1, bottom);
             }
-            else // discard right bottom part
+            else
             {
-                return SearchMatrixRec(matrix, target, top, midRow - 1, left, right)
-                    || SearchMatrixRec(matrix, target, midRow, bottom, left, midCol - 1);
+                return SearchMatrix(matrix, target, left, middleCol - 1, middleRow, bottom)
+                    || SearchMatrix(matrix, target, left, right, top, middleRow - 1);
             }
         }
 

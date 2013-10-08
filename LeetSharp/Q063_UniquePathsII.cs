@@ -35,8 +35,7 @@ namespace LeetSharp
 
             for (int i = m - 1; i >= 0; i--)
             {
-                if (obstacleGrid[i][n - 1] == 1)
-                    hitObstacleInEdge = true;
+                hitObstacleInEdge |= obstacleGrid[i][n - 1] == 1;
                 temp[n - 1] = hitObstacleInEdge ? 0 : 1;
 
                 for (int j = n - 2; j >= 0; j--)

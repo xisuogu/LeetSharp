@@ -26,8 +26,8 @@ namespace LeetSharp
             if (head == null)
                 return null;
 
-            ListNode<int> oldlast = new ListNode<int>(-1);
-            ListNode<int> newHead = oldlast;
+            ListNode<int> newHead = new ListNode<int>(-1);
+            ListNode<int> oldlast = newHead; 
             while (head != null)
             {
                 ListNode<int> newList = new ListNode<int>(-1);

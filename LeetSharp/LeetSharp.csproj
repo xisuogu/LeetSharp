@@ -182,6 +182,11 @@
     <Compile Include="Q131_PalindromePartitioning.cs" />
     <Compile Include="Q132_PalindromePartitioningII.cs" />
     <Compile Include="Q133_LowestCommonAncestor.cs" />
+    <Compile Include="Q134_CloneGraph.cs" />
+    <Compile Include="Q135_Candy.cs" />
+    <Compile Include="Q136_GasStation.cs" />
+    <Compile Include="Q137_SingleNumber.cs" />
+    <Compile Include="Q138_WordBreak.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -980,6 +985,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="CaseData\Q133_Small.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CaseData\Q138_Small.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
