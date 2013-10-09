@@ -12,6 +12,44 @@ namespace LeetSharp
     {
         public bool WordBreak(string s, string[] dict)
         {
+            // Given a string s with length n. We use segment(i, j) to indicate whether sub-string t
+            // (starting at s[i] and end at s[j]) can be segmented into dictionary words. 
+            // Therefore segment(i, j) = true if 
+            // 1): sub-string t is a word in the dictionary; or
+            // 2): there is a pos k (i < k < j - 1) such that both segment(i, k) and segment(k + 1, j) are true
+
+            HashSet<string> dictSet = new HashSet<string>(dict);
+
+            bool[,] segment = new bool[s.Length, s.Length];
+            for (int start = s.Length - 1; start >= 0; start--)
+            {
+                for (int end = start; end < s.Length; end++)
+                {
+                    string t = s.Substring(start, end - start + 1);
+                    if (dictSet.Contains(t))
+                    {
+                        segment[start, end] = true;
+                    }
+                    else
+                    {
+                        for (int k = start + 1; k < end - 1; k++)
+                        {
+                            if (segment[start, k] && segment[k + 1, end])
+                            {
+                                segment[start, end] = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return segment[0, s.Length - 1];
+        }
+
+
+        public bool WordBreakSlow(string s, string[] dict)
+        {
             var cache = new Dictionary<string, bool>();
             var dictSet = new HashSet<string>(dict);
             return WordBreak(s, dictSet, cache);

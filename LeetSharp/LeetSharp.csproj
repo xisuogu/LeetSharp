@@ -187,6 +187,7 @@
     <Compile Include="Q136_GasStation.cs" />
     <Compile Include="Q137_SingleNumber.cs" />
     <Compile Include="Q138_WordBreak.cs" />
+    <Compile Include="Q139_WordBreakII.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -988,6 +989,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="CaseData\Q138_Small.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CaseData\Q139_Small.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -1,0 +1,2 @@
+﻿abcd, ["ab","cd"]	[["ab","cd"]]
+catsanddog, ["cat","cats","and","sand","dog"]	[["cats","and","dog"],["cat","sand","dog"]]
